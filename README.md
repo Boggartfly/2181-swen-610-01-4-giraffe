@@ -5,9 +5,15 @@ microframework.
 
 ## Team
 
-- Jane Doe
+- Parth Sane
 
-- John Doe
+- Diego
+
+- Ashish
+
+- Shimon
+
+- Hind
 
 
 ##Prerequisites
