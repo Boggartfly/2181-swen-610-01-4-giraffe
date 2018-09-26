@@ -7,7 +7,7 @@ microframework.
 
 - Parth Sane
 
-- Diego
+- Diego Hilario Barinas
 
 - Ashish
 
