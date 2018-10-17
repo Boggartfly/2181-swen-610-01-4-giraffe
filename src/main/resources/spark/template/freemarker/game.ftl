@@ -112,6 +112,7 @@
                     class="Space"
                     </#if>
                     >
+
                 <#if space.piece??>
                   <div class="Piece"
                        id="piece-${row.index}-${space.cellIdx}"
