@@ -341,7 +341,7 @@ define(function(require){
    */
   GameView.prototype.beep = function beep() {
     var sound = document.getElementById("audio");
-    sound.play();
+  //  sound.play();
   }
   
   //
