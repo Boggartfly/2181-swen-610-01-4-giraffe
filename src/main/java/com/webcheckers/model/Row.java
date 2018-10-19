@@ -29,22 +29,7 @@ public class Row implements Iterable<Space> {
         for(int counter=0; counter<=7; counter++){
                 p.setCell(counter)  ;
 
-                if(p.isValidPosition() && p.initialPosition()){
-                    if(p.isOpponentsPosition()) {
-                        add(new Space(counter, false, new Piece(PieceTypeEnum.SINGLE, GameCenter.opponentColor)));
-                    }
-                    else {
-
-                        add(new Space(counter, false, new Piece(PieceTypeEnum.SINGLE, GameCenter.playerColor)));
-                    }
-                }
-                else if(p.isValidPosition()) {
-                    add(new Space(counter, true, null));
-                }
-                else {
-                    add(new Space(counter, false, null));
-                }
-
+            if(counter % 2 ==1 && (index<=2||index>=5) && index %2 ==0 ) {
 
             /**
             Position position = new Position(counter,)
@@ -56,15 +41,8 @@ public class Row implements Iterable<Space> {
             else if( (index<=2 && index %2 ==1 &&  counter % 2 ==0))    {
                 add(new Space(counter,true,new Piece(PieceTypeEnum.SINGLE, GameCenter.playerColor)));
             }
-            else if(counter % 2 ==1 && index>=5 && index %2 ==0){
-                add(new Space(counter,false,new Piece(PieceTypeEnum.SINGLE, GameCenter.opponentColor)));
-            }
-            else if(  index >=5 && index %2 ==1 &&  counter % 2 ==0){
-                add(new Space(counter,true,new Piece(PieceTypeEnum.SINGLE, GameCenter.opponentColor)));
-            }
-            else {
-                add(new Space(counter, false, null));
-            }
+            else
+                add(new Space(counter,true,null));
 
             **/
 
