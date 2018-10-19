@@ -92,8 +92,7 @@ public class Player {
     public void setMove(Move move) {
         this.move = move;
     }
-<<<<<<< HEAD
-=======
+
 
     @Override
     public String toString() {
@@ -108,5 +107,5 @@ public class Player {
                 ", move=" + move +
                 '}';
     }
->>>>>>> master
+
 }

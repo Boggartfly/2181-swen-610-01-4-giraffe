@@ -14,10 +14,8 @@ import java.util.List;
 public class Board  implements Iterable<Row>  {
 
     private List<Row> rowList;
-<<<<<<< HEAD
-=======
+
     int indexPosition =0;
->>>>>>> master
 
     /**
      *
@@ -28,17 +26,13 @@ public class Board  implements Iterable<Row>  {
 
         for(int counter =0; counter <=7; counter ++ )
         {
-<<<<<<< HEAD
-            add(new Row(counter));
-        }
 
-=======
             rowList.add(new Row(counter));
         }
 
         System.out.println("Row List Size " +rowList.size());
 
->>>>>>> master
+
     }
 
     /**
@@ -53,49 +47,6 @@ public class Board  implements Iterable<Row>  {
     @Override
     public Iterator<Row> iterator() {
 
-<<<<<<< HEAD
-        return new RowIterator<>(rowList);
-    }
-
-
-
-    /**This class is an iterator
-     *
-     * @param <Row>
-     */
-    private class RowIterator<Row> implements Iterator<Row>{
-
-        int indexPosition =0;
-        List<Row> rowList;
-
-        public RowIterator(List<Row> rowList) {
-            this.rowList = rowList;
-        }
-
-
-        @Override
-        public boolean hasNext() {
-
-            if(rowList.size() >= indexPosition+1){
-                return true;
-            }
-            return false;
-        }
-
-        @Override
-        public Row next() {
-            Row row = rowList.get(indexPosition);
-            indexPosition++;
-
-            return row;
-
-        }
-    }
-
-
-
-
-=======
 
         return new Iterator<Row>() {
 
@@ -122,5 +73,4 @@ public class Board  implements Iterable<Row>  {
     }
 
 
->>>>>>> master
 }

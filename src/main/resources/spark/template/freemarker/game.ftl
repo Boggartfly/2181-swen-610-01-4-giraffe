@@ -113,10 +113,8 @@
                     </#if>
                     >
 
-<<<<<<< HEAD
-=======
 
->>>>>>> master
+
                 <#if space.piece??>
 
                   <div class="Piece"
