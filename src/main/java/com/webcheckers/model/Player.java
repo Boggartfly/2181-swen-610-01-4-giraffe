@@ -92,4 +92,21 @@ public class Player {
     public void setMove(Move move) {
         this.move = move;
     }
+<<<<<<< HEAD
+=======
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "playerName='" + playerName + '\'' +
+                ", opponentName='" + opponentName + '\'' +
+                ", isMyTurn=" + isMyTurn +
+                ", playerColor=" + playerColor +
+                ", opponentColor=" + opponentColor +
+                ", message=" + message +
+                ", board=" + board +
+                ", move=" + move +
+                '}';
+    }
+>>>>>>> master
 }

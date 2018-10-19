@@ -5,7 +5,11 @@ public class Space {
     private int cellIdx;
     private boolean isValid;
 
+<<<<<<< HEAD
     private Object piece;
+=======
+    private Piece piece;
+>>>>>>> master
 
     public Space(int cellIdx, boolean isValid, Piece piece) {
         this.cellIdx = cellIdx;
@@ -29,7 +33,11 @@ public class Space {
         isValid = valid;
     }
 
+<<<<<<< HEAD
     public Object getPiece() {
+=======
+    public Piece getPiece() {
+>>>>>>> master
         return piece;
     }
 

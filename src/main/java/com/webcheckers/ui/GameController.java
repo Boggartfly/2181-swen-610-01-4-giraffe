@@ -1,5 +1,7 @@
 package com.webcheckers.ui;
 
+
+import com.webcheckers.appl.GameCenter;
 import com.webcheckers.model.*;
 import spark.ModelAndView;
 import spark.Request;
@@ -14,11 +16,16 @@ public class GameController implements TemplateViewRoute {
     @Override
     public ModelAndView handle(Request request, Response response) {
 
+
+
+        GameCenter.opponentColor = PieceColorEnum.WHITE;
+        GameCenter.playerColor = PieceColorEnum.RED;
         Board board = new Board();
 
 
-        Player player = new Player("Ashish","Comp", PieceColorEnum.WHITE,PieceColorEnum.RED,true,new Message("Hello", MessageTypeEnum.info),board);
 
+
+        Player player = new Player("Ashish ","Comp", GameCenter.playerColor,GameCenter.opponentColor,true,new Message("Finally Our Game page is Up", MessageTypeEnum.info),board);
 
 
         Map<String, Object> vm = new HashMap<>();
