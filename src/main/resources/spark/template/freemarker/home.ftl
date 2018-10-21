@@ -16,14 +16,9 @@
 
     <div class="body">
         <div align="center">
-            <p>Welcome to the world of online Checkers.</p>
-        <#if message??>
-            <div class="error">${message}</div><br>
-        </#if>
-            <form action="/login" method="POST">
-                <input type="text" name="username"><br><br>
-                <input type="submit" value="Login">
-            </form>
+            <p>Welcome to the world of online Checkers.<br>
+            <a href="/login">Click Here to Login</a>
+
         </div>
     </div>
     

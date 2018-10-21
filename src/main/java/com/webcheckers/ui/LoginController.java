@@ -31,6 +31,12 @@ public class LoginController implements TemplateViewRoute {
         Map<String, Object> vm = new HashMap<>();
         final Session httpSession = request.session();
 
+        //request.
+        if (request.requestMethod() == "GET"){
+            vm.put("title", "Welcome!");
+            return new ModelAndView(vm, "login.ftl");
+        }
+
         String playerName = request.queryParams("username");
 
         //httpSession.attribute("playerName", playerName);
@@ -59,6 +65,6 @@ public class LoginController implements TemplateViewRoute {
     private ModelAndView error(final Map<String, Object> vm, final String message) {
         vm.put("title", "Welcome!");
         vm.put(MESSAGE_ATTR, message);
-        return new ModelAndView(vm, "home.ftl");
+        return new ModelAndView(vm, "login.ftl");
     }
 }
