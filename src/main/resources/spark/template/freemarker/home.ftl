@@ -13,9 +13,18 @@
     <div class="navigation">
       <a href="/">my home</a>
     </div>
-    
+
     <div class="body">
-      <p>Welcome to the world of online Checkers.</p>
+        <div align="center">
+            <p>Welcome to the world of online Checkers.</p>
+        <#if message??>
+            <div class="error">${message}</div><br>
+        </#if>
+            <form action="/login" method="POST">
+                <input type="text" name="username"><br><br>
+                <input type="submit" value="Login">
+            </form>
+        </div>
     </div>
     
   </div>

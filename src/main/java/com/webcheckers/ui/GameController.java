@@ -17,15 +17,17 @@ public class GameController implements TemplateViewRoute {
     public ModelAndView handle(Request request, Response response) {
 
 
-
         GameCenter.opponentColor = PieceColorEnum.WHITE;
         GameCenter.playerColor = PieceColorEnum.RED;
         Board board = new Board();
 
+        String playerName = UserManagement.users.get(request.session().id());
 
+        //String playerName2 = request.session().attribute("playerName");
 
-
-        Player player = new Player("Ashish ","Comp", GameCenter.playerColor,GameCenter.opponentColor,true,new Message("Finally Our Game page is Up", MessageTypeEnum.info),board);
+        if (playerName == null)
+            response.redirect("/");
+        Player player = new Player(playerName, "Comp", GameCenter.playerColor, GameCenter.opponentColor, true, new Message("Finally Our Game page is Up", MessageTypeEnum.info), board);
 
 
         Map<String, Object> vm = new HashMap<>();
@@ -37,8 +39,8 @@ public class GameController implements TemplateViewRoute {
         vm.put("opponentName", player.getOpponentName());
         vm.put("opponentColor", player.getOpponentColor());
         vm.put("isMyTurn", player.isMyTurn());
-        vm.put("message",player.getMessage());
-        vm.put("board",player.getBoard());
-        return new ModelAndView(vm , "game.ftl");
+        vm.put("message", player.getMessage());
+        vm.put("board", player.getBoard());
+        return new ModelAndView(vm, "game.ftl");
     }
 }

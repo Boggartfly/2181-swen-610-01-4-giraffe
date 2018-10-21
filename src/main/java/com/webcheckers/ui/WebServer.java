@@ -1,6 +1,7 @@
 package com.webcheckers.ui;
 
 import static spark.Spark.*;
+
 import spark.TemplateEngine;
 
 
@@ -120,10 +121,17 @@ public class WebServer {
     //// code clean; using small classes.
 
     // Shows the Checkers game Home page.
+   // post("/login", new LoginController(), templateEngine);
     get(HOME_URL, new HomeController(), templateEngine);
 
-    // Shows the Checkers game Home page.
+    //User Sessions controller
+    post("/login", new LoginController(), templateEngine);
+    get("/login", new LoginController(), templateEngine);
+    get("/signout", new SignOutController(), templateEngine);
+
+    // Game Controllers
     get(GAME_URL, new GameController(), templateEngine);
+    post(GAME_URL, new GameController(), templateEngine);
 
   }
 
