@@ -24,5 +24,6 @@ public class Position {
 
     public void setCell(int cell) {
         this.cell = cell;
+
     }
 }
