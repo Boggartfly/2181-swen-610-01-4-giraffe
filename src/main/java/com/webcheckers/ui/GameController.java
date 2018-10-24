@@ -9,6 +9,7 @@ import spark.Response;
 import spark.TemplateViewRoute;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GameController implements TemplateViewRoute {
@@ -18,12 +19,10 @@ public class GameController implements TemplateViewRoute {
 
 
 
+
         GameCenter.opponentColor = PieceColorEnum.WHITE;
         GameCenter.playerColor = PieceColorEnum.RED;
         Board board = new Board();
-
-
-
 
         Player player = new Player("Ashish ","Comp", GameCenter.playerColor,GameCenter.opponentColor,true,new Message("Finally Our Game page is Up", MessageTypeEnum.info),board);
 

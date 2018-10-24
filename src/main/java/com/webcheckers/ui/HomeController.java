@@ -3,6 +3,7 @@ package com.webcheckers.ui;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.webcheckers.appl.GameCenter;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -19,6 +20,8 @@ public class HomeController implements TemplateViewRoute {
   public ModelAndView handle(Request request, Response response) {
     Map<String, Object> vm = new HashMap<>();
     vm.put("title", "Welcome!");
+
+
     return new ModelAndView(vm , "home.ftl");
   }
 

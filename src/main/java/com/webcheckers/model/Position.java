@@ -25,4 +25,40 @@ public class Position {
     public void setCell(int cell) {
         this.cell = cell;
     }
+
+    public boolean isValidPosition(){
+
+
+
+                    if((row % 2 ==0) && (cell%2==1)){
+                        return true;
+                    }
+
+                    else if((row%2 ==1) && (cell%2==0)) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+
+    public boolean initialPosition(){
+
+        if(row <=2 || row >=5){
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    public boolean isOpponentsPosition(){
+        if(row >= 5){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

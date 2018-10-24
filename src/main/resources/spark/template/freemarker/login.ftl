@@ -8,15 +8,11 @@
 <body>
   <div class="page">
   
-    <h1>Web Checkers</h1>
-    
-    <div class="navigation">
-      <a href="/">my home</a>
-    </div>
+    <h1>LOGIN PAGE</h1>
     
     <div class="body">
-        <p>Welcome to the world of online Checkers. Select your username and enter it below</p><br>
-        <form action="/game" method="POST">
+        <p>Welcome to the world of online Checkers. Please enter your user name to continue</p><br>
+        <form action="/home" method="GET">
             <input type="text" name="username"><br>
             <input type="submit" value="Submit">
         </form>

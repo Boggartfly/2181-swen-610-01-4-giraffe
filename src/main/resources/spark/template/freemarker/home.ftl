@@ -11,11 +11,11 @@
     <h1>Web Checkers</h1>
     
     <div class="navigation">
-      <a href="/">my home</a>
+      <a href="/game">Start the Game</a>
     </div>
     
     <div class="body">
-      <p>Welcome to the world of online Checkers.</p>
+      <p>Welcome to the Game Lobby</p>
     </div>
     
   </div>

@@ -2,6 +2,7 @@ package com.webcheckers.model;
 
 
 import com.webcheckers.appl.GameCenter;
+import javafx.geometry.Pos;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,18 +22,52 @@ public class Row implements Iterable<Space> {
 
         spaces = new ArrayList<>();
 
-        for(int counter=0; counter<=7; counter++){
+        Position p = new Position(0,0);
 
-            if(counter % 2 ==1 && (index<=2||index>=5) && index %2 ==0 ) {
+        p.setRow(index);
+
+        for(int counter=0; counter<=7; counter++){
+                p.setCell(counter)  ;
+
+                if(p.isValidPosition() && p.initialPosition()){
+                    if(p.isOpponentsPosition()) {
+                        add(new Space(counter, false, new Piece(PieceTypeEnum.SINGLE, GameCenter.opponentColor)));
+                    }
+                    else {
+
+                        add(new Space(counter, false, new Piece(PieceTypeEnum.SINGLE, GameCenter.playerColor)));
+                    }
+                }
+                else if(p.isValidPosition()) {
+                    add(new Space(counter, true, null));
+                }
+                else {
+                    add(new Space(counter, false, null));
+                }
+
+
+            /**
+            Position position = new Position(counter,)
+            if(counter % 2 ==1 && index<=2 && index %2 ==0 ) {
 
                 add(new Space(counter,false,new Piece(PieceTypeEnum.SINGLE, GameCenter.playerColor)));
             }
 
-            else if( (index<=2|| index >=5) && index %2 ==1 &&  counter % 2 ==0){
+            else if( (index<=2 && index %2 ==1 &&  counter % 2 ==0))    {
                 add(new Space(counter,true,new Piece(PieceTypeEnum.SINGLE, GameCenter.playerColor)));
             }
-            else
-                add(new Space(counter,true,null));
+            else if(counter % 2 ==1 && index>=5 && index %2 ==0){
+                add(new Space(counter,false,new Piece(PieceTypeEnum.SINGLE, GameCenter.opponentColor)));
+            }
+            else if(  index >=5 && index %2 ==1 &&  counter % 2 ==0){
+                add(new Space(counter,true,new Piece(PieceTypeEnum.SINGLE, GameCenter.opponentColor)));
+            }
+            else {
+                add(new Space(counter, false, null));
+            }
+
+            **/
+
 
         }
 

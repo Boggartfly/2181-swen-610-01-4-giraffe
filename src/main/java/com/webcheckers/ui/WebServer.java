@@ -45,8 +45,10 @@ public class WebServer {
   /**
    * The URL pattern to request the Home page.
    */
-  public static final String HOME_URL = "/";
+  public static final String LOGIN_URL = "/";
+  public static final String HOME_URL = "/home";
   public static final String GAME_URL = "/game";
+  public static final String VALIDATION_URL = "/validateMove";
 
   //
   // Attributes
@@ -120,10 +122,16 @@ public class WebServer {
     //// code clean; using small classes.
 
     // Shows the Checkers game Home page.
+
+    // Shows the Checkers game Home page.
+    get(LOGIN_URL, new LoginController(), templateEngine);
     get(HOME_URL, new HomeController(), templateEngine);
 
     // Shows the Checkers game Home page.
     get(GAME_URL, new GameController(), templateEngine);
+
+    //Validate the move
+    post(VALIDATION_URL, new ValidationController());
 
   }
 
