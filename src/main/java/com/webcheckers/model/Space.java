@@ -10,7 +10,7 @@ public class Space {
     public Space(int cellIdx, boolean isValid, Piece piece) {
         this.cellIdx = cellIdx;
         this.isValid = isValid;
-        this.piece = piece;
+        this piece = piece;
     }
 
     public int getCellIdx() {

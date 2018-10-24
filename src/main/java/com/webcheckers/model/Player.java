@@ -19,6 +19,13 @@ public class Player {
     private Move move;
 
     public Player(String playerName, String opponentName, PieceColorEnum playerColor, PieceColorEnum opponentColor, boolean isMyTurn, Message message, Board board) {
+
+        if(playerName == null || opponentName == null ){
+            throw new IllegalArgumentException();
+        }
+
+
+
         this.playerName = playerName;
         this.opponentName = opponentName;
         this.playerColor = playerColor;
