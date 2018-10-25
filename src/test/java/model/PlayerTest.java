@@ -2,16 +2,15 @@ package model;
 
 import com.webcheckers.model.Board;
 import com.webcheckers.model.Message;
-        import com.webcheckers.model.PieceColorEnum;
-        import com.webcheckers.model.Player;
-import org.junit.Ignore;
+import com.webcheckers.model.PieceColorEnum;
+import com.webcheckers.model.Player;
 import org.junit.Test;
-        import spark.Session;
+import spark.Session;
 
-        import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.mock;
 
 public class PlayerTest {
-    @Ignore
+
     @Test(expected = IllegalArgumentException.class)
     public void nullPlayerName() {
 
@@ -28,7 +27,7 @@ public class PlayerTest {
 
     }
 
-    @Ignore
+
     @Test(expected = IllegalArgumentException.class)
     public void nullOpponentName() {
 
@@ -46,7 +45,7 @@ public class PlayerTest {
 
     }
 
-    @Ignore
+
     @Test(expected = IllegalArgumentException.class)
     public void nullMessage() {
 
