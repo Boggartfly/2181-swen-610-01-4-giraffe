@@ -133,6 +133,9 @@ public class WebServer {
     get(GAME_URL, new GameController(), templateEngine);
     post(GAME_URL, new GameController(), templateEngine);
 
+    //Lobby
+    get("/lobby", new LobbyController(), templateEngine);
+    post("/lobby", new LobbyController(), templateEngine);
   }
 
 }

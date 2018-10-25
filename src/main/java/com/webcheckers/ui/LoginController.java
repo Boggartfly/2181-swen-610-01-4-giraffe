@@ -11,6 +11,8 @@ public class LoginController implements TemplateViewRoute {
 
     static final String MESSAGE_ATTR = "message";
     static final String MESSAGE_TYPE_ATTR = "messageType";
+    static final String invalidUserName = "The user name entered is invalid!";
+    static final String unavailableUserName = "The user name is already taken!";
 
     LoginController() {
     }
@@ -19,11 +21,11 @@ public class LoginController implements TemplateViewRoute {
      * Make an error message when the userName is null.
      */
     static String makeBadArgMessage() {
-        return String.format("The user name entered is invalid!");
+        return invalidUserName;
     }
 
     static String makeUnavailableUserMessage() {
-        return String.format("The user name is already taken!");
+        return unavailableUserName;
     }
 
     @Override
@@ -54,7 +56,8 @@ public class LoginController implements TemplateViewRoute {
         /**
          * instead of populating the vm here, redirect to game
          */
-        response.redirect("/game");
+        //response.redirect("/game");
+        response.redirect("/lobby");
 
         //this will never get executed
         vm.put("title", "Welcome!");
@@ -62,7 +65,7 @@ public class LoginController implements TemplateViewRoute {
     }
 
 
-    private ModelAndView error(final Map<String, Object> vm, final String message) {
+    protected ModelAndView error(final Map<String, Object> vm, final String message) {
         vm.put("title", "Welcome!");
         vm.put(MESSAGE_ATTR, message);
         return new ModelAndView(vm, "login.ftl");
