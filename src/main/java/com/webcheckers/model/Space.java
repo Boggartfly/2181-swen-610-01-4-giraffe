@@ -8,9 +8,15 @@ public class Space {
     private Piece piece;
 
     public Space(int cellIdx, boolean isValid, Piece piece) {
+
+        if(cellIdx >50)
+        {
+            throw new IllegalArgumentException();
+        }
+
         this.cellIdx = cellIdx;
         this.isValid = isValid;
-        this piece = piece;
+        this.piece = piece;
     }
 
     public int getCellIdx() {

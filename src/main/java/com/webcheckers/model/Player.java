@@ -20,10 +20,9 @@ public class Player {
 
     public Player(String playerName, String opponentName, PieceColorEnum playerColor, PieceColorEnum opponentColor, boolean isMyTurn, Message message, Board board) {
 
-        if(playerName == null || opponentName == null ){
+        if(playerName == null || opponentName == null || message == null){
             throw new IllegalArgumentException();
         }
-
 
 
         this.playerName = playerName;
