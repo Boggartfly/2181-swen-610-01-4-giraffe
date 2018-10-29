@@ -11,7 +11,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jdk.version>1.8</jdk.version>
-    <spark.version>2.2</spark.version>
+    <spark.version>2.7.2</spark.version>
     <spark.freemarker.version>2.0.0</spark.freemarker.version>
     <freemarker.version>2.3.23</freemarker.version>
   </properties>
@@ -95,6 +95,31 @@
         </configuration>
       </plugin>
 
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.7.8</version>
+        <configuration>
+          <destfile>/target/coverage-reports/jacoco-unit.exec</destfile>
+          <datafile>/target/coverage-reports/jacoco-unit.exec</datafile>
+        </configuration>
+        <executions>
+          <execution>
+            <id>jacoco-initialize</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>jacoco-site</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
     </plugins>
   </build>
 
