@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.ConsoleHandler;
 
+import com.webcheckers.model.MatchRequest;
 import com.webcheckers.model.UserManagement;
 import org.eclipse.jetty.server.Authentication;
 import spark.ModelAndView;
@@ -20,28 +21,38 @@ import spark.TemplateViewRoute;
  */
 public class LobbyController implements TemplateViewRoute {
 
+    String requestedBy = "";
+    String currentUser = "";
+
     @Override
     public ModelAndView handle(Request request, Response response) {
+
         Map<String, Object> vm = new HashMap<>();
         String sessionId = request.session().id();
-        String parameter;
-
+        requestedBy = UserManagement.users.get(sessionId);
+        currentUser = UserManagement.users.get(sessionId);
 
         if (request.requestMethod() == "POST") {
-            parameter = request.queryParams("username");
-            if (!request.queryParams("username").isEmpty())
-                System.out.println(parameter);
-
+            MatchRequest.requestMatch(requestedBy, request.queryParams("username"));
+            response.redirect("/lobby");
         }
 
-
-
+        else if (request.requestMethod() == "GET") {
+            if (!MatchRequest.userStatus.isEmpty())
+                if (MatchRequest.userStatus.values().contains(currentUser)) {
+                    System.out.println(MatchRequest.getKeyFromValue(currentUser));
+                    vm.put("requests", MatchRequest.getKeyFromValue(currentUser));
+                    //vm.put("request", "You have a match request!\n Would you like yo play against:  " + MatchRequest.getKeyFromValue(currentUser));
+                }
+        }
 
         vm.put("title", "Welcome!");
         vm.put("userName", UserManagement.users.get(sessionId));
         vm.put("users", UserManagement.users.values());
+        //vm.put("requestedUser", MatchRequest.userStatus.values());
 
-        return new ModelAndView(vm , "lobby.ftl");
+        return new ModelAndView(vm, "lobby.ftl");
     }
+
 
 }
