@@ -9,24 +9,15 @@ public class MoveTest {
 
     private Position[] positions;
     private Position setStart;
-    public Position setEnd;
-    @Test
-    public void setStart(Position start) {
-        Move move=new Move(start,setEnd);
-        move.setStart(start);
-        assertEquals(new Position[]{start});
-        
+    private Position setEnd;
 
-    }
-
-    private void assertEquals(Position[] positions) {
+    private void assertEquals() {
     }
 
 
     @Test
-    public void getStart(Position start) {
-        Move move=new Move(start,setEnd);
-        assertEquals(new Position[]{start});
+    public void getStart() {
+        Move move=new Move(setStart,setEnd);
     }
 
     @Test
@@ -36,9 +27,9 @@ public class MoveTest {
     }
 
     @Test
-    public void getEnd( Position end) {
-        Move move=new Move(setStart,end);
-        assertEquals(new Position[]{end});
+    public void getEnd() {
+        Move move=new Move(setStart,setEnd);
+
     }
 
     @Test
