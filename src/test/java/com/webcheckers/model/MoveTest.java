@@ -30,7 +30,7 @@ public class MoveTest {
     }
 
     @Test
-    public void setStart1() {
+    public void setStart() {
         Move move=new Move();
         Move.setStart();
     }
