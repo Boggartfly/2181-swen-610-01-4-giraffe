@@ -3,6 +3,10 @@ import static org.junit.Assert.*;
 import com.webcheckers.model.Message;
 import com.webcheckers.model.MessageTypeEnum;
 import org.junit.Test;
+
+/**
+ * @Author Parth Sane
+ */
 public class MessageTest {
     private Message message;
     private String testMessage = "Test";

@@ -3,6 +3,9 @@ import com.webcheckers.model.PieceColorEnum;
 import com.webcheckers.model.PieceTypeEnum;
 import org.junit.Test;
 import static org.junit.Assert.*;
+/**
+ * @Author Parth Sane
+ */
 public class PieceTest {
     private Piece piece;
     public PieceTest(){
