@@ -1,3 +1,5 @@
+package com.webcheckers.model;
+
 import com.webcheckers.model.Piece;
 import com.webcheckers.model.PieceColorEnum;
 import com.webcheckers.model.PieceTypeEnum;

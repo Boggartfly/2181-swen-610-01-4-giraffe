@@ -1,3 +1,5 @@
+package com.webcheckers.model;
+
 import static org.junit.Assert.*;
 
 import com.webcheckers.model.Message;
