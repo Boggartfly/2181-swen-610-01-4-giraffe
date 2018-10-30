@@ -12,7 +12,7 @@ public class MoveTest {
     public Position setEnd;
     @Test
     public void setStart(Position start) {
-        Move move=new Move();
+        Move move=new Move(start,setEnd);
         Move.setStart();
         assertEquals(new Position[]{start});
         
