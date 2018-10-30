@@ -25,25 +25,25 @@ public class MoveTest {
 
     @Test
     public void getStart(Position start) {
-        Move move=new Move();
+        Move move=new Move(start,setEnd);
         assertEquals(new Position[]{start});
     }
 
     @Test
     public void setStart() {
-        Move move=new Move();
-        Move.setStart();
+        Move move=new Move(setStart,setEnd);
+        move.setStart(setStart);
     }
 
     @Test
     public void getEnd( Position end) {
-        Move move=new Move();
+        Move move=new Move(setStart,end);
         assertEquals(new Position[]{end});
     }
 
     @Test
     public void setEnd() {
-        Move move=new Move();
-        Move.setStart();
+        Move move=new Move(setStart,setEnd);
+        move.setStart(setStart);
     }
 }
