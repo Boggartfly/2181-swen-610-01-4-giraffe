@@ -2,7 +2,6 @@ package com.webcheckers.model;
 
 
 import com.webcheckers.appl.GameCenter;
-import javafx.geometry.Pos;
 
 import java.util.ArrayList;
 import java.util.Iterator;
