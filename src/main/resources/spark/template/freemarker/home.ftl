@@ -13,9 +13,13 @@
     <div class="navigation">
       <a href="/game">Start the Game</a>
     </div>
-    
+
     <div class="body">
-      <p>Welcome to the Game Lobby</p>
+        <div align="center">
+            <p>Welcome to the world of online Checkers.<br>
+            <a href="/login">Click Here to Login</a>
+
+        </div>
     </div>
     
   </div>
