@@ -17,6 +17,11 @@
 
     <div class="body">
         <div align="center">
+
+            <#if rejectedMessage??>
+            <div class="error">${rejectedMessage}</div><br>
+            </#if>
+
             <p>List of online users</p>
 
 
@@ -37,9 +42,12 @@
 <#if requests??>
         <br><br><br>Match Requests, play against: <br><br>
     <#list requests as request>
+    <form action="/request" method="POST">
         ${request}<br>
-    <input type="submit" name="acceptRequest" value="Accept">
-        <input type="submit" name="rejectRequest" value="Reject"><br>
+        <input type="hidden" name="requestor" value=${request} />
+        <input type="submit" name="handleRequest" value="Accept">
+        <input type="submit" name="handleRequest" value="Reject"><br>
+    </form>
 
     </#list>
 </#if>

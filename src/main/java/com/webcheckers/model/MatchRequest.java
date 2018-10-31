@@ -26,4 +26,15 @@ public class MatchRequest {
         return requestorList;
     }
 
+    public static void rejectRequest (String requestedBy, String requestedUserName){
+        if(userStatus.containsKey(requestedBy))
+            userStatus.put(requestedBy, "rejected");
+    }
+
+    public static String notifyRejection(String requestedBy){
+        userStatus.remove(requestedBy);
+        return "Your match request has been rejected, Try someone else!";
+    }
+
+
 }

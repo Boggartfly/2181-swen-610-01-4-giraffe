@@ -39,8 +39,13 @@ public class LobbyController implements TemplateViewRoute {
 
         else if (request.requestMethod() == "GET") {
             if (!MatchRequest.userStatus.isEmpty())
+                if (MatchRequest.userStatus.get(currentUser) == "rejected") {
+                    System.out.println(MatchRequest.userStatus);
+                    vm.put("rejectedMessage", MatchRequest.notifyRejection(currentUser));
+                }
                 if (MatchRequest.userStatus.values().contains(currentUser)) {
-                    System.out.println(MatchRequest.getKeyFromValue(currentUser));
+                    //System.out.println(MatchRequest.getKeyFromValue(currentUser));
+                    System.out.println(MatchRequest.userStatus);
                     vm.put("requests", MatchRequest.getKeyFromValue(currentUser));
                     //vm.put("request", "You have a match request!\n Would you like yo play against:  " + MatchRequest.getKeyFromValue(currentUser));
                 }
