@@ -59,6 +59,7 @@ define(function(require){
       }
     }
     jQuery.post('/validateMove', JSON.stringify(move), handleMoveResponse, 'json');
+
   }
 
   // export class constructor

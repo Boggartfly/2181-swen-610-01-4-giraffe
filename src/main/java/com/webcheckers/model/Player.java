@@ -18,12 +18,32 @@ public class Player {
 
     private Move move;
 
+    public Player(String playerName){
+        this.playerName = playerName;
+        this.playerColor = PieceColorEnum.RED;
+        this.opponentColor = PieceColorEnum.WHITE;
+        this.isMyTurn = true;
+        this.message = new Message("Hello",MessageTypeEnum.info);
+    }
+
+    public Player(String playerName, Player firstPlayer){
+
+        this.playerName = playerName;
+        this.playerColor = firstPlayer.opponentColor;
+        this.opponentName = firstPlayer.playerName;
+        this.opponentColor = firstPlayer.playerColor;
+        this.board = firstPlayer.board;
+        this.isMyTurn = firstPlayer.isMyTurn?false:true;
+        this.message = new Message("Hello",MessageTypeEnum.info);
+
+
+    }
+
     public Player(String playerName, String opponentName, PieceColorEnum playerColor, PieceColorEnum opponentColor, boolean isMyTurn, Message message, Board board) {
 
-        if(playerName == null || opponentName == null || message == null){
+        if(playerName == null){
             throw new IllegalArgumentException();
         }
-
 
         this.playerName = playerName;
         this.opponentName = opponentName;
@@ -83,7 +103,7 @@ public class Player {
     }
 
     public Board getBoard() {
-        return board;
+        return this.board;
     }
 
     public void setBoard(Board board) {

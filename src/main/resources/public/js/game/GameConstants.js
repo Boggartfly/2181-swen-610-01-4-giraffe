@@ -14,6 +14,6 @@ define(function(){
       PENDING_MOVE: 'PENDING_MOVE',
       STABLE_TURN: 'STABLE_TURN',
       WAIT_FOR_MY_TURN: 'WAIT_FOR_MY_TURN',
-      CHECK_MY_TURN: 'CHECK_MY_TURN'
+        CHECK_MY_TURN: 'CHECK_MY_TURN'
     };
 });

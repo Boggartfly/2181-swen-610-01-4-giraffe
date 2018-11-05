@@ -1,8 +1,6 @@
 package com.webcheckers.model;
 
 
-import com.webcheckers.appl.GameCenter;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -10,10 +8,9 @@ import java.util.List;
 public class Row implements Iterable<Space> {
 
 
+    private List<Space> spaces ;
     private int index ;
 
-    private List<Space> spaces ;
-    int indexPosition = 0;
 
     public Row(int index) {
 
@@ -30,11 +27,11 @@ public class Row implements Iterable<Space> {
 
                 if(p.isValidPosition() && p.initialPosition()){
                     if(p.isOpponentsPosition()) {
-                        add(new Space(counter, false, new Piece(PieceTypeEnum.SINGLE, GameCenter.opponentColor)));
+                        add(new Space(counter, false, new Piece(PieceTypeEnum.SINGLE, PieceColorEnum.WHITE)));
                     }
                     else {
 
-                        add(new Space(counter, false, new Piece(PieceTypeEnum.SINGLE, GameCenter.playerColor)));
+                        add(new Space(counter, false, new Piece(PieceTypeEnum.SINGLE, PieceColorEnum.RED)));
                     }
                 }
                 else if(p.isValidPosition()) {
@@ -43,30 +40,6 @@ public class Row implements Iterable<Space> {
                 else {
                     add(new Space(counter, false, null));
                 }
-
-
-            /**
-            Position position = new Position(counter,)
-            if(counter % 2 ==1 && index<=2 && index %2 ==0 ) {
-
-                add(new Space(counter,false,new Piece(PieceTypeEnum.SINGLE, GameCenter.playerColor)));
-            }
-
-            else if( (index<=2 && index %2 ==1 &&  counter % 2 ==0))    {
-                add(new Space(counter,true,new Piece(PieceTypeEnum.SINGLE, GameCenter.playerColor)));
-            }
-            else if(counter % 2 ==1 && index>=5 && index %2 ==0){
-                add(new Space(counter,false,new Piece(PieceTypeEnum.SINGLE, GameCenter.opponentColor)));
-            }
-            else if(  index >=5 && index %2 ==1 &&  counter % 2 ==0){
-                add(new Space(counter,true,new Piece(PieceTypeEnum.SINGLE, GameCenter.opponentColor)));
-            }
-            else {
-                add(new Space(counter, false, null));
-            }
-
-            **/
-
 
         }
 
@@ -77,26 +50,21 @@ public class Row implements Iterable<Space> {
         spaces.add(space);
     }
 
+    public List<Space> getSpaces() {
+        return spaces;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
     @Override
     public Iterator<Space> iterator() {
-        return new Iterator<Space>() {
-
-            @Override
-            public boolean hasNext() {
-                if(spaces.size() >=indexPosition +1){
-                    return true;
-                }
-                return false;
-            }
-
-            @Override
-            public Space next() {
-                Space space = spaces.get(indexPosition);
-                indexPosition++;
-
-                return space;
-            }
-        };
+        return spaces.iterator();
 
     }
 }
