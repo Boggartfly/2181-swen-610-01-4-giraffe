@@ -21,7 +21,7 @@
             <div class="error">${message}</div><br>
         </#if>
             <form action="/login" method="POST">
-                <input type="text" name="username"><br><br>
+                <input type="text" name="username" pattern="[a-zA-Z0-9-]+" title="Username can only contain letters and numbers" required><br><br>
                 <input type="submit" value="Login">
             </form>
         </div>

@@ -138,6 +138,7 @@ public class WebServer {
     //Lobby
     get("/lobby", new LobbyController(), templateEngine);
     post("/lobby", new LobbyController(), templateEngine);
+    post("/request", new HandleRequestController(), templateEngine);
   }
 
 }
