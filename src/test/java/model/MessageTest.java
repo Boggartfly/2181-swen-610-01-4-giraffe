@@ -5,7 +5,7 @@ import com.webcheckers.model.MessageTypeEnum;
 import org.junit.Test;
 import static org.junit.Assert.*;
 public class MessageTest {
-    Message message;
+    private Message message;
 
     public MessageTest(){
         message = new Message("Test",MessageTypeEnum.info);
