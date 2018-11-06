@@ -11,7 +11,7 @@ import java.util.*;
 
 public class GameCentre {
 
-    private  static Map<String, Player> userPlayerMap ;
+    public  static Map<String, Player> userPlayerMap ;
 
     private  static Set<String> userSet;
 
