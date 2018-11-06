@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="/css/game.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script>
+
   window.gameState = {
     'player' : {
       'name' : '${playerName}',
@@ -46,6 +47,7 @@
         and you will be informed when it is your turn.
        </#if>
       </p>
+
       
       <div>
         <div id="game-controls">
@@ -80,19 +82,20 @@
           <fieldset id="game-toolbar">
             <legend>Controls</legend>
             <div class="toolbar">
-              <a href="#" id="backupLink" disabled=disabled
+
+                <a href="#" id="backupLink" enabled=enabled
                  title="Remove the last move with your current turn.">
                 Backup one move
               </a>
-              <a href="#" id="resetLink" disabled=disabled
+              <a href="#" id="resetLink" enabled=enabled
                  title="Remove all moves within your current turn.">
                 Reset turn
               </a>
-              <a href="#" id="submitLink" disabled=disabled
+              <a href="#" id="submitLink" enabled=enabled
                  title="Commit your current turn to the server.">
                 Submit turn
               </a>
-              <a href="#" id="resignLink" disabled=disabled
+              <a href="#" id="resignLink" enabled=enabled
                  title="End the game by resigning.">
                 Resign from game
               </a>
@@ -100,7 +103,6 @@
           </fieldset>
           
         </div>
-  
         <div class="game-board">
           <table id="game-board">
             <tbody>
@@ -112,21 +114,13 @@
                     class="Space"
                     </#if>
                     >
-
-
-                <#if space.piece??>
-
+              <#if space.piece??>
                   <div class="Piece"
-                       id="piece-${row_index}-${space.cellIdx}"
+                       id="piece-${row.index}-${space.cellIdx}"
                        data-type="${space.piece.type}"
                        data-color="${space.piece.color}">
                   </div>
-
-
                 </#if>
-
-
-
                 </td>
               </#list>
               </tr>
@@ -135,14 +129,10 @@
           </table>
         </div>
       </div>
-
     </form>
     </div>
   </div>
-
   <audio id="audio" src="http://www.soundjay.com/button/beep-07.mp3" autostart="false" ></audio>
-  
   <script data-main="js/game/index" src="js/require.js"></script>
-  
 </body>
 </html>

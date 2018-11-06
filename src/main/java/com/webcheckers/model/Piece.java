@@ -1,10 +1,13 @@
 package com.webcheckers.model;
 
-public class Piece {
+public class  Piece {
 
-    PieceTypeEnum type;
 
-    PieceColorEnum color;
+    private PieceTypeEnum type;
+
+    private PieceColorEnum color;
+
+
 
     public Piece(PieceTypeEnum pieceType, PieceColorEnum pieceColor) {
         this.type = pieceType;
@@ -25,5 +28,7 @@ public class Piece {
 
     public void setColor(PieceColorEnum color) {
         this.color = color;
+
     }
+
 }

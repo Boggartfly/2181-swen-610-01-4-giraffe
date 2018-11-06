@@ -1,11 +1,11 @@
 package com.webcheckers;
 
+import java.util.HashMap;
 import java.util.logging.Logger;
 
+import com.webcheckers.ui.WebServer;
 import spark.TemplateEngine;
 import spark.template.freemarker.FreeMarkerEngine;
-
-import com.webcheckers.ui.WebServer;
 
 
 /**
@@ -32,6 +32,7 @@ public final class Application {
    *    Command line arguments; none expected.
    */
   public static void main(String[] args) {
+
 
     // The application uses FreeMarker templates to generate the HTML
     // responses sent back to the client. This will be the engine processing

@@ -330,6 +330,7 @@ define(function(require){
 
   GameView.prototype.disableAllControls = function disableAllControls() {
     jQuery("div#game-controls a").attr('disabled', 'disabled');
+    jQuery("div#game-board div#Piece").attr('draggable', 'false');
   };
 
   GameView.prototype.displayMessage = function displayMessage(message) {

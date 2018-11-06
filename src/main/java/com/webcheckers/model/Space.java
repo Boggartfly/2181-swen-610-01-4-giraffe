@@ -36,4 +36,6 @@ public class Space {
     public void setPiece(Piece piece) {
         this.piece = piece;
     }
+
+
 }

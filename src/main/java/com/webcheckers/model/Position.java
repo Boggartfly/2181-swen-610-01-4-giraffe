@@ -6,6 +6,9 @@ public class Position {
     private int cell;
 
     public Position(int row, int cell) {
+        if(row>7 || cell >7){
+            throw new IllegalArgumentException();
+        }
         this.row = row;
         this.cell = cell;
     }
@@ -24,6 +27,39 @@ public class Position {
 
     public void setCell(int cell) {
         this.cell = cell;
+    }
 
+    public boolean isValidPosition(){
+
+                    if((row % 2 ==0) && (cell%2==1)){
+                        return true;
+                    }
+
+                    else if((row%2 ==1) && (cell%2==0)) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+
+    public boolean initialPosition(){
+
+        if(row <=2 || row >=5){
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    public boolean isOpponentsPosition(){
+        if(row >= 5){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

@@ -41,6 +41,7 @@ define(function(require){
    */
   CheckMyTurnState.prototype.onEntry = function onEntry() {
     var view = this.getView();
+
     // query the server if it's my turn
     jQuery.post('/checkTurn', '',
             function(isMyTurn, textStatus, jqXHR) {
