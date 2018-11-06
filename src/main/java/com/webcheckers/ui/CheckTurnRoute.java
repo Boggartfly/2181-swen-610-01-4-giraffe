@@ -16,14 +16,14 @@ public class CheckTurnRoute implements Route {
     @Override
     public Object handle(Request request, Response response) throws Exception {
 
-        String playerName=request.session().attribute("playerName");
+        String playerName=request.session().attribute("playerName").toString().trim();
 
         Game game = gameCenter.getPlayerGame(gameCenter.getPlayer(playerName));
 
-        if(game.getMyTurn() ==0 && game.getPlayer().getPlayerName() == playerName){
+        if(game.getMyTurn()==0 && game.getPlayer().getPlayerName() == playerName){
             return true;
         }
-        else if(game.getMyTurn() ==1 && game.getOpponent().getPlayerName() == playerName){
+        else if(game.getMyTurn()==1 && game.getOpponent().getPlayerName() == playerName){
             return true;
         }else {
             return false;
