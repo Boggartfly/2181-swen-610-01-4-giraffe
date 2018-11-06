@@ -62,4 +62,10 @@ public class Position {
             return false;
         }
     }
+
+    @Override
+    public boolean equals(Object position){
+        Position pos = (Position) position;
+        return pos.row == this.row && pos.cell == this.cell;
+    }
 }
