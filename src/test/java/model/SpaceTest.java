@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 public class SpaceTest {
 
-    Space space;
+    private Space space;
 
     public SpaceTest(){
         space =  new Space(1,true,new Piece(PieceTypeEnum.SINGLE, PieceColorEnum.RED));
