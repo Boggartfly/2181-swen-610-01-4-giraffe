@@ -65,4 +65,9 @@ public class Board  implements Iterable<Row>  {
 
     }
 
+    public void setPiece(Position position, Piece piece){
+        rowList.stream().filter(row-> row.getIndex() == position.getRow()).findFirst().get().getSpaces()
+                .stream().filter(space -> space.getCellIdx() ==position.getCell()).findFirst().get().setPiece(piece);
+    }
+
 }

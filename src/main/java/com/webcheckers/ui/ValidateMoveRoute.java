@@ -34,8 +34,13 @@ public class ValidateMoveRoute implements Route {
             }else {
                 game.setMyTurn(0);
             }
-            gameCentre.updateGame(player,game);
+
             Message message =  new Message("Valid Move", MessageTypeEnum.info);
+           Piece pieceToMove = game.getBoard().fetchPiece(move.getStart());
+           game.getBoard().setPiece(move.getStart(),null);
+           game.getBoard().setPiece(move.getEnd(),pieceToMove);
+           gameCentre.updateGame(player,game);
+
             return JsonUtils.toJson(message);
 
 
