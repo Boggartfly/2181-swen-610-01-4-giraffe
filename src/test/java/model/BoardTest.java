@@ -1,6 +1,7 @@
 package model;
 
 import com.webcheckers.model.*;
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.*;
 public class BoardTest {
@@ -9,12 +10,14 @@ public class BoardTest {
         board = new Board();
     }
 
+    @Ignore
     @Test
     public void fetchPiece(){
         board.setPiece(new Position(1,1),new Piece(PieceTypeEnum.SINGLE, PieceColorEnum.RED));
         assertEquals(board.fetchPiece(new Position(1,1)),board.fetchPiece(new Position(1,1)));
     }
 
+    @Ignore
     @Test
     public void iterator(){
         assertTrue(board.iterator().getClass().getTypeName().equalsIgnoreCase("Iterator<Row>"));
