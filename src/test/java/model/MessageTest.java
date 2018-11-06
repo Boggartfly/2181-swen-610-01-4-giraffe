@@ -7,6 +7,10 @@ import static org.junit.Assert.*;
 public class MessageTest {
     Message message;
 
+    public MessageTest(){
+        message = new Message("Test",MessageTypeEnum.info);
+    }
+
     @Test
     public void getText(){
         message.setText("TestMessage");
