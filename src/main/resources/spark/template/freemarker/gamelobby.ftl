@@ -17,16 +17,15 @@
 
     <div class="body">
         <div align="center">
-
             <#if rejectedMessage??>
-            <div class="error">${rejectedMessage}</div><br>
+                <div class="error">${rejectedMessage}</div><br>
+            </#if>
+            <#if errorMessage ??>
+                <div class="error">${errorMessage}</div><br>
             </#if>
 
-
-
-
             <p>List of online users</p>
-            <form id = "requstForm" action="/requestMatch" method="POST">
+            <form id="requstForm" action="/requestMatch" method="POST">
 
 
             <#list users as user>
@@ -34,7 +33,7 @@
                     <!--#if requestedUser?seq_contains(user)>-->
                         <input type="radio" name="opponent"
                                onclick="document.getElementById('submitRequest').removeAttribute('disabled')"
-                            value=${user}> ${user}<br>
+                               value=${user}> ${user}<br>
 
                 </#if>
                 <!--/#if>-->
@@ -44,29 +43,26 @@
 
 
         <#if requests??>
-            <#list requests as request>
-                <#if request != currentUser>
-                    <br><br><br>Match Requests, play against: <br><br>
-                <div style="width:400px;">
-                    <div style="float: left; width: 130px">
-                    <form action="/startGame" method="POST">
-                        ${request}<br>
-                        <input type="hidden" name="requestor" value=${request} />
-                        <input type="submit" name="handleRequest" value="Accept">
-                    </form>
-                    </div>
-                 <div style="float: right; width: 225px">
-                    <form action="/requestMatch" method="POST">
-                        ${request}<br>
-                        <input type="hidden" name="requestor" value=${request} />
-                        <input type="submit" name="handleRequest" value="Reject"><br>
-                    </form>
-                 </div>
-                </div>
+            <#list requests as requested, requestors>
+                <#if requested == currentUser>
+                    <#list requestors as requestor>
+     <br><br><br>Match Requests, play against: <br><br>
+                    <p>
+                        ${requestor}
+                    </p><br>
+<form action="/startGame" method="POST">
+    <input type="hidden" name="requestor" value=${requestor}>
+    <input type="submit" name="handleRequest" value="Accept">
+</form>
+    <form action="/rejectMatch" method="POST">
+        <input type="hidden" name="requestor" value=${requestor}>
+        <input type="submit" name="handleRequest" value="Reject"><br>
+    </form>
+
+
+                    </#list>
                 </#if>
-
             </#list>
-
         </#if>
 
         </div>

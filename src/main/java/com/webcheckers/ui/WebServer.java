@@ -54,12 +54,16 @@ public class WebServer {
     public static final String GAMELOBBY_URL = "/gameLobby";
     public static final String GAME_URL = "/game";
     public static final String GAME_REQUEST_URL = "/requestMatch";
+    public static final String GAME_REQUEST_REJECT = "/rejectMatch";
     public static final String START_GAME_URL = "/startGame";
     public static final String VALIDATION_URL = "validateMove";
     public static final String CHECKTURN_URL = "checkTurn";
     public static final String BACKUPMOVE_URL = "backupMove";
     public static final String SUBMITTURN_URL = "submitTurn";
 
+
+    public static final String GET_METHOD = "GET";
+    public static final String POST_METHOD = "POST";
     //
     // Attributes
     //
@@ -206,7 +210,10 @@ public class WebServer {
 
         get(GAMELOBBY_URL,new GameLobbyController(gameCentre),templateEngine);
 
+        //get(GAME_REQUEST_URL,new GameRequestController(gameCentre));
         post(GAME_REQUEST_URL,new GameRequestController(gameCentre));
+
+        post(GAME_REQUEST_REJECT, new RequestRejectController(gameCentre));
 
         post(START_GAME_URL,new StartGameController(gameCentre),templateEngine);
 
