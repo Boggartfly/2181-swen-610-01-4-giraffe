@@ -46,10 +46,10 @@
             <#list requests as requested, requestors>
                 <#if requested == currentUser>
                     <#list requestors as requestor>
-     <br><br><br>Match Requests, play against: <br><br>
+     <br><br><br>Match Requests<br><br>
                     <p>
                         ${requestor}
-                    </p><br>
+                    </p>
 <form action="/startGame" method="POST">
     <input type="hidden" name="requestor" value=${requestor}>
     <input type="submit" name="handleRequest" value="Accept">

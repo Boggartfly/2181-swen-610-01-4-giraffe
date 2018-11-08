@@ -51,6 +51,7 @@ public class WebServer {
      */
     public static final String LANDING_URL = "/";
     public static final String LOGIN_URL = "/login";
+    public static final String SIGNOUT_URL = "/signout";
     public static final String GAMELOBBY_URL = "/gameLobby";
     public static final String GAME_URL = "/game";
     public static final String GAME_REQUEST_URL = "/requestMatch";
@@ -207,6 +208,8 @@ public class WebServer {
 
         get(LOGIN_URL,new LoginController(gameCentre),templateEngine);
         post(LOGIN_URL,new ValidateLoginController(gameCentre),templateEngine);
+
+        get(SIGNOUT_URL, new SignoutController(gameCentre), templateEngine);
 
         get(GAMELOBBY_URL,new GameLobbyController(gameCentre),templateEngine);
 
