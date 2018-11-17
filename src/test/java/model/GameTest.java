@@ -2,13 +2,24 @@ package model;
 
 import com.webcheckers.model.Game;
 import com.webcheckers.model.Player;
+
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.mockito.*;
+//import sun.plugin2.jvm.ProcessLauncher;
+
 import static org.junit.Assert.*;
 public class GameTest {
+
     Game game;
-    public GameTest(){
-        game = new Game(new Player("A"),new Player("B"));
+
+    @Before
+    public void setUp(){
+        game = new Game(
+                new  Player("A"),
+                new Player("B"));
+
     }
 
     @Ignore

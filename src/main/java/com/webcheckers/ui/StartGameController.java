@@ -1,5 +1,6 @@
 package com.webcheckers.ui;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.webcheckers.appl.GameCentre;
 import com.webcheckers.model.Game;
 import com.webcheckers.model.PieceColorEnum;
@@ -16,6 +17,7 @@ public class StartGameController implements TemplateViewRoute {
 
 
     private GameCentre gameCentre;
+    public static Boolean unavailable = false;
 
     public StartGameController(GameCentre gameCentre) {
         this.gameCentre = gameCentre;
@@ -34,6 +36,15 @@ public class StartGameController implements TemplateViewRoute {
         System.out.println("FROM START CONTROLLER Player Name = "+playerName);
 
         System.out.println("FROM START CONTROLLER Opponent Name = "+opponentName);
+
+
+        //if the user accepts a request after the requestor has joined a match, notify? and redirect.
+        if (!gameCentre.getAvailableuserSet().contains(opponentName)){
+            unavailable = true;
+            GameRequestController.userRequestorListMap.get(playerName).remove(opponentName);
+            response.redirect(WebServer.GAMELOBBY_URL);
+            return null;
+        }
 
        GameLobbyController.awaitingPlayer.add(opponentName);
 

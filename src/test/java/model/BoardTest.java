@@ -1,7 +1,7 @@
 package model;
 
 import com.webcheckers.model.*;
-import javafx.geometry.Pos;
+
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -19,6 +19,7 @@ public class BoardTest {
         Piece piece = new Piece(PieceTypeEnum.SINGLE,PieceColorEnum.RED);
     }
 
+    @Ignore
     @Test
     public void fetchPiece(){
 
@@ -43,7 +44,8 @@ public class BoardTest {
     }
 
     @Ignore
-        @Test
+
+    @Test
     public void iterator(){
     //    assertTrue(board.iterator().getClass().getTypeName().equalsIgnoreCase("Iterator<Row>"));
     }

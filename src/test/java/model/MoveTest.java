@@ -9,6 +9,7 @@ import static org.junit.Assert.*;
 
 public class MoveTest {
 
+
     private Move CuT;
 
     @InjectMocks
