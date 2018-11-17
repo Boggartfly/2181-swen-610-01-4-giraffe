@@ -1,10 +1,7 @@
 package com.webcheckers.ui;
 
 import com.webcheckers.appl.GameCentre;
-import com.webcheckers.model.Game;
-import com.webcheckers.model.Move;
-import com.webcheckers.model.Piece;
-import com.webcheckers.model.Player;
+import com.webcheckers.model.*;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -36,6 +33,18 @@ public class SubmitTurnRoute implements Route {
         Piece pieceToMove = game.getBoard().fetchPiece(move.getStart());
         game.getBoard().setPiece(move.getStart(),null);
         game.getBoard().setPiece(move.getEnd(),pieceToMove);
+
+        if(move.isValidJumpMove(gameCenter.getPlayerType(player))) {
+
+            Position position = new Position((move.getEnd().getRow() + move.getStart().getRow())/2,(move.getEnd().getCell()+move.getStart().getCell())/2);
+           game.getBoard().setPiece(position,null);
+        }
+        if(move.isKing(gameCenter.getPlayerType(player))){
+            pieceToMove.setType(PieceTypeEnum.KING);
+            game.getBoard().setPiece(move.getEnd(),pieceToMove);
+
+        }
+
         gameCenter.updateGame(player,game);
 
        // response.redirect("/game");

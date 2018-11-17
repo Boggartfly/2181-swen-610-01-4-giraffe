@@ -101,6 +101,20 @@ public class GameCentre {
 
     }
 
+    public String getPlayerType(Player player){
+        if(gameList.stream().anyMatch(game -> game.getPlayer().getPlayerName().equalsIgnoreCase(player.getPlayerName()))){
+            return "player";
+        }
+        else if(gameList.stream().anyMatch(game -> game.getOpponent().getPlayerName().equalsIgnoreCase(player.getPlayerName()))){
+            return "opponent";
+        }
+        else {
+            return null;
+        }
+
+
+    }
+
     public void setUserPlayerMap(String playerName, Player player){
 
         userPlayerMap.put(playerName,player);
