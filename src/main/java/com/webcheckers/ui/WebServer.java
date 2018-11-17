@@ -218,7 +218,7 @@ public class WebServer {
         post(CHECKTURN_URL, new CheckTurnRoute(gameCentre));
         //Validate the move
         //Validate the move
-        post(SUBMITTURN_URL, new CheckTurnRoute(gameCentre));
+        post(SUBMITTURN_URL, new SubmitTurnRoute(gameCentre));
         //Validate the move
         post(BACKUPMOVE_URL, new BackUpMoveRoute());
 

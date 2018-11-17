@@ -25,7 +25,8 @@ public class StartGameController implements TemplateViewRoute {
     public ModelAndView handle(Request request, Response response) {
 
         Map<String, Object> vm = new HashMap<>();
-        vm.put("title","HELLO WORLD");
+        vm.put("title","Checkers Game");
+
 
         String playerName = request.session().attribute("playerName");
         String opponentName = request.body().split("&")[0].split("=")[1];

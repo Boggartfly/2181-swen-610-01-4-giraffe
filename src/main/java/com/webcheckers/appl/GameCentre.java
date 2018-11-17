@@ -5,6 +5,7 @@ package com.webcheckers.appl;
  */
 
 import com.webcheckers.model.Game;
+import com.webcheckers.model.Move;
 import com.webcheckers.model.Player;
 
 import java.util.*;
@@ -21,6 +22,8 @@ public class GameCentre {
 
     private  Set<String> availableuserSet;
 
+    private Map<Player, List<Move>> playerMoves;
+
 
     private  static Set<Game> gameList;
 
@@ -31,7 +34,36 @@ public class GameCentre {
         userSet = new HashSet<>();
         gameList = new HashSet<>();
         availableuserSet = new HashSet<>();
+        playerMoves = new HashMap<>();
     }
+
+    public void addPlayerMove(Player player, Move move){
+
+        if(playerMoves.get(player) == null){
+
+            List<Move> moves = new ArrayList<>();
+            moves.add(move);
+
+            playerMoves.put(player,moves);
+        }else {
+            playerMoves.get(player).add(move);
+        }
+
+
+    }
+
+    public Move getPlayerMove(Player player){
+
+        return playerMoves.get(player).stream().findFirst().get();
+    }
+
+    public void removePlayerMove(Player player, Move move){
+
+        playerMoves.get(player).
+                remove(playerMoves.get(player).stream().filter(move1 -> move1.getStart() == move.getStart() && move1.getEnd() == move.getEnd()).findFirst().get());
+
+    }
+
 
 
     public  boolean isUserAvailable(String userName){
@@ -41,6 +73,7 @@ public class GameCentre {
     public  void addUser(String userName){
         userSet.add(userName);
     }
+
     public  void removeUser(String userName){
         userSet.remove(userName);
     }

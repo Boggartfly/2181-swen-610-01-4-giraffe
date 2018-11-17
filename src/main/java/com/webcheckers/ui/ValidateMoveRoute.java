@@ -25,28 +25,16 @@ public class ValidateMoveRoute implements Route {
         Player player = gameCentre.getPlayer(playerName);
         Game game = gameCentre.getPlayerGame(player);
 
+        gameCentre.addPlayerMove(player,move);
 
 
-      //  if(move.getEnd().isValidPosition() && (move.getEnd().getRow()>move.getStart().getRow())){
-
-            if(playerName.equalsIgnoreCase(game.getPlayer().getPlayerName())){
-                game.setMyTurn(1);
-            }else {
-                game.setMyTurn(0);
-            }
-
-            Message message =  new Message("Valid Move", MessageTypeEnum.info);
-           Piece pieceToMove = game.getBoard().fetchPiece(move.getStart());
-           game.getBoard().setPiece(move.getStart(),null);
-           game.getBoard().setPiece(move.getEnd(),pieceToMove);
-           gameCentre.updateGame(player,game);
-
-            return JsonUtils.toJson(message);
+        Message message =  new Message("Valid Move", MessageTypeEnum.info);
 
 
-       // }
-      //  else {
-       //     return "error";
-       // }
+
+        return JsonUtils.toJson(message);
+
+
+
     }
 }
