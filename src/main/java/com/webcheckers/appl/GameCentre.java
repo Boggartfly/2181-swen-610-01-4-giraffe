@@ -67,7 +67,7 @@ public class GameCentre {
 
 
     public  boolean isUserAvailable(String userName){
-        return userSet.contains(userName)?false:true;
+        return !userSet.contains(userName);
     }
 
     public  void addUser(String userName){
