@@ -27,11 +27,11 @@ public class Row implements Iterable<Space> {
 
                 if(p.isValidPosition() && p.initialPosition()){
                     if(p.isOpponentsPosition()) {
-                        add(new Space(counter, false, new Piece(PieceTypeEnum.SINGLE, PieceColorEnum.WHITE)));
+                        add(new Space(counter, true, new Piece(PieceTypeEnum.SINGLE, PieceColorEnum.WHITE)));
                     }
                     else {
 
-                        add(new Space(counter, false, new Piece(PieceTypeEnum.SINGLE, PieceColorEnum.RED)));
+                        add(new Space(counter, true, new Piece(PieceTypeEnum.SINGLE, PieceColorEnum.RED)));
                     }
                 }
                 else if(p.isValidPosition()) {

@@ -6,9 +6,6 @@ public class Position {
     private int cell;
 
     public Position(int row, int cell) {
-        if(row>7 || cell >7){
-            throw new IllegalArgumentException();
-        }
         this.row = row;
         this.cell = cell;
     }
@@ -61,5 +58,11 @@ public class Position {
         else {
             return false;
         }
+    }
+
+    @Override
+    public boolean equals(Object position){
+        Position pos = (Position) position;
+        return pos.row == this.row && pos.cell == this.cell;
     }
 }

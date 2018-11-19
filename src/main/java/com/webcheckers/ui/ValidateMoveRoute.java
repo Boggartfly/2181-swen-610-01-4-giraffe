@@ -18,6 +18,8 @@ public class ValidateMoveRoute implements Route {
 
     public Object handle(Request request, Response response) {
 
+        Message message ;
+
         System.out.println("VALIDATION MOVE ROUTE");
 
         Move move = JsonUtils.fromJson(request.body(), Move.class);
@@ -26,27 +28,46 @@ public class ValidateMoveRoute implements Route {
         Game game = gameCentre.getPlayerGame(player);
 
 
+        if(move.isValidMove(gameCentre.getPlayerType(player))) {
+            message = new Message("This is a valid move", MessageTypeEnum.info);
+            gameCentre.addPlayerMove(player,move);
+        }else if(move.isValidJumpMove(gameCentre.getPlayerType(player))){
+            Position position = new Position((move.getEnd().getRow() + move.getStart().getRow())/2,(move.getEnd().getCell()+move.getStart().getCell())/2);
+            PieceColorEnum pieceColorEnum;
 
-      //  if(move.getEnd().isValidPosition() && (move.getEnd().getRow()>move.getStart().getRow())){
+            switch (gameCentre.getPlayerType(player)){
+                case "player":
+                //    position = new Position(Math.abs(move.getEnd().getRow() - move.getStart().getRow() +2),
+                //            Math.abs(move.getEnd().getCell()-move.getStart().getCell()) +1);
+                    pieceColorEnum = PieceColorEnum.WHITE;
+                    break;
+                case "opponent":
+               //     position = new Position(Math.abs(move.getEnd().getRow() - move.getStart().getRow()+2),
+               //             Math.abs(move.getEnd().getCell()-move.getStart().getCell() +1));
+                    pieceColorEnum = PieceColorEnum.RED;
+                    break;
+                default:
+               //         position=null;
+                        pieceColorEnum = null;
 
-            if(playerName.equalsIgnoreCase(game.getPlayer().getPlayerName())){
-                game.setMyTurn(1);
-            }else {
-                game.setMyTurn(0);
             }
 
-            Message message =  new Message("Valid Move", MessageTypeEnum.info);
-           Piece pieceToMove = game.getBoard().fetchPiece(move.getStart());
-           game.getBoard().setPiece(move.getStart(),null);
-           game.getBoard().setPiece(move.getEnd(),pieceToMove);
-           gameCentre.updateGame(player,game);
+            Piece piece = game.getBoard().fetchPiece(position);
 
-            return JsonUtils.toJson(message);
+            if(piece!= null){
+                if(piece.getColor().equals(pieceColorEnum)){
+                    message = new Message("This is a valid Jump Move", MessageTypeEnum.info);
+                    gameCentre.addPlayerMove(player,move);
+                }else {
+                    message = new Message("This is not a valid Jump Move", MessageTypeEnum.error);
+                }
+            }else
+                message = new Message("This is not a valid Jump Move", MessageTypeEnum.error);
 
+        } else {
+            message = new Message("Sorry this is not a valid move because TODO",MessageTypeEnum.error);
+        }
 
-       // }
-      //  else {
-       //     return "error";
-       // }
+        return JsonUtils.toJson(message);
     }
 }

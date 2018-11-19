@@ -11,7 +11,7 @@ import java.util.Map;
 public class GameRequestController implements Route {
 
     private GameCentre gameCentre;
-    public  static Map<String, List<String>> userRequestorListMap;
+    public static Map<String, List<String>> userRequestorListMap;
 
 
     public GameRequestController(GameCentre gameCentre) {
@@ -20,30 +20,41 @@ public class GameRequestController implements Route {
 
     }
 
- @Override
+    @Override
     public ModelAndView handle(Request request, Response response) {
         Map<String, Object> vm = new HashMap<>();
-        vm.put("title","Lobby Page");
-        vm.put("currentUser",request.session().attribute("playerName"));
+        vm.put("title", "Lobby Page");
+        vm.put("currentUser", request.session().attribute("playerName"));
 
-        String requestor = request.session().attribute("playerName");
-        String  player= request.body().split("=")[1];
 
-        System.out.println("Requestor Name " + requestor);
-        System.out.println("Player Name " + player);
+        String player;
+        String requestor;
+        //System.out.println("Requestor Name " + requestor);
+        //System.out.println("Player Name " + player);
 
-        if(userRequestorListMap.get(player) ==null) {
-            userRequestorListMap.put(player, new ArrayList<>());
-            userRequestorListMap.get(player).add(requestor);
-            GameLobbyController.vm.put("requests",userRequestorListMap.get(player));
-        }else {
-            userRequestorListMap.get(player).add(requestor);
-            GameLobbyController.vm.put("requests",userRequestorListMap.get(player));
+
+        //guess the if/else could be deleted, we never call this controller with a get
+        if (request.requestMethod() == WebServer.GET_METHOD) {
+
+
+        } else if (request.requestMethod() == WebServer.POST_METHOD) {
+            requestor = request.session().attribute("playerName");
+            player = request.body().split("=")[1];
+            if (userRequestorListMap.get(player) == null) {
+                userRequestorListMap.put(player, new ArrayList<>());
+                userRequestorListMap.get(player).add(requestor);
+                GameLobbyController.vm.put("requests", userRequestorListMap);
+            } else {
+                userRequestorListMap.get(player).add(requestor);
+                vm.put("requests", userRequestorListMap.get(player));
+                GameLobbyController.vm.put("requests", userRequestorListMap);
+            }
+
         }
 
         response.redirect("/gameLobby");
 
-        return new ModelAndView(vm,"gamelobby.ftl");
+        return new ModelAndView(vm, "gamelobby.ftl");
 
-        }
+    }
 }

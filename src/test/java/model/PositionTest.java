@@ -5,7 +5,9 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
-public class PositionTest {
+public class
+
+PositionTest {
 
     /**
      * Test to make sure you don't have co-ordinates on the board beyong 0-7 range

@@ -13,7 +13,7 @@
     <jdk.version>1.8</jdk.version>
     <spark.version>2.7.2</spark.version>
     <spark.freemarker.version>2.0.0</spark.freemarker.version>
-    <freemarker.version>2.3.23</freemarker.version>
+    <freemarker.version>2.3.28</freemarker.version>
   </properties>
 
   <dependencies>
@@ -100,8 +100,8 @@
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.8.2</version>
         <configuration>
-          <destfile>/target/coverage-reports/jacoco-unit.exec</destfile>
-          <datafile>/target/coverage-reports/jacoco-unit.exec</datafile>
+          <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
+          <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
         </configuration>
         <executions>
           <execution>
