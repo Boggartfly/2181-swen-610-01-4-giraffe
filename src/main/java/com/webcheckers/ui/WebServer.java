@@ -61,6 +61,7 @@ public class WebServer {
     public static final String CHECKTURN_URL = "checkTurn";
     public static final String BACKUPMOVE_URL = "backupMove";
     public static final String SUBMITTURN_URL = "submitTurn";
+    public static final String RESIGN_GAME_URL = "resignGame";
 
 
     public static final String GET_METHOD = "GET";
@@ -230,7 +231,10 @@ public class WebServer {
         //Validate the move
         post(SUBMITTURN_URL, new SubmitTurnRoute(gameCentre));
         //Validate the move
-        post(BACKUPMOVE_URL, new BackUpMoveRoute());
+        post(BACKUPMOVE_URL, new BackUpMoveRoute(gameCentre));
+        //Resign the game
+        post(RESIGN_GAME_URL, new ResignGameRoute());
+
 
 
 
