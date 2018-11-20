@@ -15,8 +15,8 @@ import java.util.Map;
 public class StartGameController implements TemplateViewRoute {
 
 
-    private GameCentre gameCentre;
     public static Boolean unavailable = false;
+    private GameCentre gameCentre;
 
     public StartGameController(GameCentre gameCentre) {
         this.gameCentre = gameCentre;
@@ -26,26 +26,26 @@ public class StartGameController implements TemplateViewRoute {
     public ModelAndView handle(Request request, Response response) {
 
         Map<String, Object> vm = new HashMap<>();
-        vm.put("title","Checkers Game");
+        vm.put("title", "Checkers Game");
 
 
         String playerName = request.session().attribute("playerName");
         String opponentName = request.body().split("&")[0].split("=")[1];
 
-        System.out.println("FROM START CONTROLLER Player Name = "+playerName);
+        System.out.println("FROM START CONTROLLER Player Name = " + playerName);
 
-        System.out.println("FROM START CONTROLLER Opponent Name = "+opponentName);
+        System.out.println("FROM START CONTROLLER Opponent Name = " + opponentName);
 
 
         //if the user accepts a request after the requestor has joined a match, notify? and redirect.
-        if (!gameCentre.getAvailableuserSet().contains(opponentName)){
+        if (!gameCentre.getAvailableuserSet().contains(opponentName)) {
             unavailable = true;
             GameRequestController.userRequestorListMap.get(playerName).remove(opponentName);
             response.redirect(WebServer.GAMELOBBY_URL);
             return null;
         }
 
-       GameLobbyController.awaitingPlayer.add(opponentName);
+        GameLobbyController.awaitingPlayer.add(opponentName);
 
 
         Player player = new Player(playerName.trim());
@@ -54,7 +54,7 @@ public class StartGameController implements TemplateViewRoute {
         player.setOpponentColor(PieceColorEnum.WHITE);
         player.setMyTurn(true);
 
-        gameCentre.setUserPlayerMap(playerName,player);
+        gameCentre.setUserPlayerMap(playerName, player);
 
 
         Player opponent = new Player(opponentName.trim());
@@ -63,20 +63,20 @@ public class StartGameController implements TemplateViewRoute {
         opponent.setOpponentColor(PieceColorEnum.RED);
         opponent.setMyTurn(false);
 
-        gameCentre.setUserPlayerMap(opponentName,opponent);
+        gameCentre.setUserPlayerMap(opponentName, opponent);
 
 
         gameCentre.removeAvailableUser(playerName);
 
         gameCentre.removeAvailableUser(opponentName);
 
-        Game game = new Game(player,opponent);
+        Game game = new Game(player, opponent);
         gameCentre.addGame(game);
 
         response.redirect("/game");
 
 
-        return new ModelAndView(vm,"game.ftl");
+        return new ModelAndView(vm, "game.ftl");
 
     }
 }

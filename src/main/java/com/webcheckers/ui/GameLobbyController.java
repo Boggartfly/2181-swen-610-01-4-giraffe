@@ -1,7 +1,6 @@
 package com.webcheckers.ui;
 
 import com.webcheckers.appl.GameCentre;
-import com.webcheckers.model.Player;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -14,10 +13,10 @@ import java.util.Set;
 
 public class GameLobbyController implements TemplateViewRoute {
 
-    private GameCentre gameCentre;
     public static String GAMELOBBY_VIEW = "gamelobby.ftl";
     public static Map<String, Object> vm = new HashMap<>();
     public static Set<String> awaitingPlayer = new HashSet<>();
+    private GameCentre gameCentre;
 
     public GameLobbyController(GameCentre gameCentre) {
         this.gameCentre = gameCentre;
@@ -26,12 +25,12 @@ public class GameLobbyController implements TemplateViewRoute {
     @Override
     public ModelAndView handle(Request request, Response response) {
 
-        vm.put("title","Lobby Page");
+        vm.put("title", "Lobby Page");
         vm.put("users", gameCentre.getAvailableuserSet());
-        vm.put("currentUser",request.session().attribute("playerName"));
+        vm.put("currentUser", request.session().attribute("playerName"));
         vm.remove("errorMessage");
 
-        if(StartGameController.unavailable){
+        if (StartGameController.unavailable) {
             GameLobbyController.vm.put("errorMessage", "The request is no longer available");
             StartGameController.unavailable = false;
         }

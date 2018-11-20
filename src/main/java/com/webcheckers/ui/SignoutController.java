@@ -1,13 +1,13 @@
 package com.webcheckers.ui;
 
 import com.webcheckers.appl.GameCentre;
-import com.webcheckers.model.Message;
-import com.webcheckers.model.MessageTypeEnum;
-import spark.*;
+import spark.ModelAndView;
+import spark.Request;
+import spark.Response;
+import spark.TemplateViewRoute;
 
 import java.util.HashMap;
 import java.util.Map;
-
 
 
 public class SignoutController implements TemplateViewRoute {
@@ -31,7 +31,7 @@ public class SignoutController implements TemplateViewRoute {
         response.cookie("playerName", null);
         request.session().invalidate();
 
-        vm.put("title","Checkers Game");
+        vm.put("title", "Checkers Game");
         return new ModelAndView(vm, LandingController.LANDING_VIEW);
     }
 

@@ -11,7 +11,7 @@ public class Game {
     private int myTurn;
 
 
-     public Game(Player player, Player opponent){
+    public Game(Player player, Player opponent) {
         this.player = player;
         this.opponent = opponent;
 
@@ -41,9 +41,9 @@ public class Game {
     }
 
 
-    public boolean isOpponentAvailable(){
+    public boolean isOpponentAvailable() {
 
-        return opponent !=null ? true: false;
+        return opponent != null ? true : false;
     }
 
     public int getMyTurn() {

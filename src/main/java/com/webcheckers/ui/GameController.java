@@ -26,30 +26,30 @@ public class GameController implements TemplateViewRoute {
     public ModelAndView handle(Request request, Response response) {
 
         String playerName = request.session().attribute("playerName");
-        System.out.println("PLAYER NAME ON GAME CONTROLLER "+ playerName);
+        System.out.println("PLAYER NAME ON GAME CONTROLLER " + playerName);
 
 
-        System.out.println("#### PLAYER ++++ "+gameCentre.getPlayer(playerName).toString());
+        System.out.println("#### PLAYER ++++ " + gameCentre.getPlayer(playerName).toString());
         Player player = gameCentre.getPlayer(playerName.trim());
 
         Game game = gameCentre.getPlayerGame(player);
 
-        System.out.println("#### GAME ++++"+game.toString());
+        System.out.println("#### GAME ++++" + game.toString());
 
 
         Map<String, Object> vm = new HashMap<>();
 
-        if(game.getPlayer().getPlayerName().equalsIgnoreCase(playerName)){
+        if (game.getPlayer().getPlayerName().equalsIgnoreCase(playerName)) {
             vm.put("title", "Welcome to Game");
             vm.put("currentPlayer", game.getPlayer());
             vm.put("playerName", game.getPlayer().getPlayerName());
             vm.put("playerColor", game.getPlayer().getPlayerColor());
             vm.put("opponentName", game.getPlayer().getOpponentName());
             vm.put("opponentColor", game.getPlayer().getOpponentColor());
-            vm.put("isMyTurn", game.getMyTurn()==0 ? true:false);
-            vm.put("message",game.getPlayer().getMessage());
-            vm.put("board",game.getBoard());
-            return new ModelAndView(vm , "game.ftl");
+            vm.put("isMyTurn", game.getMyTurn() == 0 ? true : false);
+            vm.put("message", game.getPlayer().getMessage());
+            vm.put("board", game.getBoard());
+            return new ModelAndView(vm, "game.ftl");
         } else {
             vm.put("title", "Welcome to Game");
             vm.put("currentPlayer", game.getOpponent());
@@ -57,10 +57,10 @@ public class GameController implements TemplateViewRoute {
             vm.put("playerColor", game.getOpponent().getPlayerColor());
             vm.put("opponentName", game.getOpponent().getOpponentName());
             vm.put("opponentColor", game.getOpponent().getOpponentColor());
-            vm.put("isMyTurn", game.getMyTurn()==1 ? true:false);
-            vm.put("message",game.getPlayer().getMessage());
-            vm.put("board",game.getBoard());
-            return new ModelAndView(vm , "game.ftl");
+            vm.put("isMyTurn", game.getMyTurn() == 1 ? true : false);
+            vm.put("message", game.getPlayer().getMessage());
+            vm.put("board", game.getBoard());
+            return new ModelAndView(vm, "game.ftl");
 
         }
     }

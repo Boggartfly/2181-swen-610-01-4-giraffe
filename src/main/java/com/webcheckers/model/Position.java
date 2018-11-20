@@ -26,42 +26,36 @@ public class Position {
         this.cell = cell;
     }
 
-    public boolean isValidPosition(){
+    public boolean isValidPosition() {
 
-                    if((row % 2 ==0) && (cell%2==1)){
-                        return true;
-                    }
-
-                    else if((row%2 ==1) && (cell%2==0)) {
-                        return true;
-                    }
-                    else {
-                        return false;
-                    }
-                }
-
-    public boolean initialPosition(){
-
-        if(row <=2 || row >=5){
+        if ((row % 2 == 0) && (cell % 2 == 1)) {
             return true;
-        }
-
-        else {
+        } else if ((row % 2 == 1) && (cell % 2 == 0)) {
+            return true;
+        } else {
             return false;
         }
     }
 
-    public boolean isOpponentsPosition(){
-        if(row >= 5){
+    public boolean initialPosition() {
+
+        if (row <= 2 || row >= 5) {
             return true;
+        } else {
+            return false;
         }
-        else {
+    }
+
+    public boolean isOpponentsPosition() {
+        if (row >= 5) {
+            return true;
+        } else {
             return false;
         }
     }
 
     @Override
-    public boolean equals(Object position){
+    public boolean equals(Object position) {
         Position pos = (Position) position;
         return pos.row == this.row && pos.cell == this.cell;
     }

@@ -25,7 +25,7 @@ public class LandingController implements TemplateViewRoute {
 
 
         Map<String, Object> vm = new HashMap<>();
-        vm.put("title","Checkers Game");
+        vm.put("title", "Checkers Game");
 
         return new ModelAndView(vm, LANDING_VIEW);
     }

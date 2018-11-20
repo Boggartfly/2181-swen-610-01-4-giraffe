@@ -1,12 +1,11 @@
 package com.webcheckers.model;
 
-public class  Piece {
+public class Piece {
 
 
     private PieceTypeEnum type;
 
     private PieceColorEnum color;
-
 
 
     public Piece(PieceTypeEnum pieceType, PieceColorEnum pieceColor) {

@@ -1,11 +1,12 @@
 package com.webcheckers.ui;
 
 import com.webcheckers.appl.GameCentre;
-import spark.*;
+import spark.ModelAndView;
+import spark.Request;
+import spark.Response;
+import spark.Route;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class RequestRejectController implements Route {
@@ -16,7 +17,7 @@ public class RequestRejectController implements Route {
 
     public RequestRejectController(GameCentre gameCentre) {
         this.gameCentre = gameCentre;
-       // this.userRequestorListMap = new HashMap<>();
+        // this.userRequestorListMap = new HashMap<>();
 
     }
 

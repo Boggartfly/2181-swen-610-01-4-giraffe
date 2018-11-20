@@ -10,12 +10,11 @@ import java.util.List;
 
 /**
  * Board is an iterable
- *
+ * <p>
  * An iterable should have an iterator to iterate over
- *
  */
 
-public class Board  implements Iterable<Row>  {
+public class Board implements Iterable<Row> {
 
     private List<Row> rowList;
 
@@ -26,29 +25,27 @@ public class Board  implements Iterable<Row>  {
 
         rowList = new ArrayList<>();
 
-        for(int counter =0; counter <=7; counter ++ )
-        {
+        for (int counter = 0; counter <= 7; counter++) {
 
             rowList.add(new Row(counter));
         }
 
-        System.out.println("Row List Size " +rowList.size());
+        System.out.println("Row List Size " + rowList.size());
 
 
     }
 
     /**
-     *
      * @param row
      */
-    private void add(Row row){
+    private void add(Row row) {
 
         rowList.add(row);
     }
 
-    public void getRow(int rowIndex,int spaceIndex){
-        rowList.stream().filter(row->row.getIndex()==rowIndex).findFirst().get()
-                .getSpaces().stream().filter(space -> space.getCellIdx()==spaceIndex).findFirst().get().getPiece();
+    public void getRow(int rowIndex, int spaceIndex) {
+        rowList.stream().filter(row -> row.getIndex() == rowIndex).findFirst().get()
+                .getSpaces().stream().filter(space -> space.getCellIdx() == spaceIndex).findFirst().get().getPiece();
     }
 
     @Override
@@ -58,16 +55,16 @@ public class Board  implements Iterable<Row>  {
     }
 
 
-    public Piece fetchPiece(Position position){
+    public Piece fetchPiece(Position position) {
 
-        return rowList.stream().filter(row-> row.getIndex() == position.getRow()).findFirst().get().getSpaces()
+        return rowList.stream().filter(row -> row.getIndex() == position.getRow()).findFirst().get().getSpaces()
                 .stream().filter(space -> space.getCellIdx() == position.getCell()).findFirst().get().getPiece();
 
     }
 
-    public void setPiece(Position position, Piece piece){
-        rowList.stream().filter(row-> row.getIndex() == position.getRow()).findFirst().get().getSpaces()
-                .stream().filter(space -> space.getCellIdx() ==position.getCell()).findFirst().get().setPiece(piece);
+    public void setPiece(Position position, Piece piece) {
+        rowList.stream().filter(row -> row.getIndex() == position.getRow()).findFirst().get().getSpaces()
+                .stream().filter(space -> space.getCellIdx() == position.getCell()).findFirst().get().setPiece(piece);
     }
 
 }
