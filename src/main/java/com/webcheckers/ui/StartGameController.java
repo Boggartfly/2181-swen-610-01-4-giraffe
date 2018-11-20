@@ -1,6 +1,5 @@
 package com.webcheckers.ui;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.webcheckers.appl.GameCentre;
 import com.webcheckers.model.Game;
 import com.webcheckers.model.PieceColorEnum;
