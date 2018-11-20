@@ -1,10 +1,14 @@
 package appl;
 
 import com.webcheckers.appl.GameCentre;
+import com.webcheckers.model.Game;
 import com.webcheckers.model.Move;
 import com.webcheckers.model.Player;
 import com.webcheckers.model.Position;
 import org.junit.Test;
+import org.junit.internal.runners.statements.ExpectException;
+import org.junit.rules.ExpectedException;
+
 import static org.junit.Assert.*;
 public class GameCentreTest {
     private GameCentre gameCentre;
@@ -33,5 +37,19 @@ public class GameCentreTest {
     public void getPlayerTest(){
         gameCentre.setUserPlayerMap("PlayerTest",new Player("PlayerTest"));
         assertEquals("PlayerTest", gameCentre.getPlayer("PlayerTest").getPlayerName());
+    }
+
+    @Test
+    public void removeAvailableUserTest(){
+        gameCentre.addAvailableUser("PlayerTest");
+        gameCentre.removeAvailableUser("PlayerTest");
+        assertTrue(gameCentre.isUserAvailable("PlayerTest"));
+    }
+
+    @Test(expected=NullPointerException.class)
+    public void removeGame(){
+        gameCentre.addGame(new Game(new Player("PlayerTest1"),new Player("PlayerTest2")));
+        gameCentre.removeGame(new Game(new Player("PlayerTest1"),new Player("PlayerTest2")));
+        assertNull(gameCentre.getPlayerGame(gameCentre.getPlayer("PlayerTest1")));
     }
 }
