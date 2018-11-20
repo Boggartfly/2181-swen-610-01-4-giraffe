@@ -233,7 +233,7 @@ public class WebServer {
         //Validate the move
         post(BACKUPMOVE_URL, new BackUpMoveRoute(gameCentre));
         //Resign the game
-        post(RESIGN_GAME_URL, new ResignGameRoute());
+        //post(RESIGN_GAME_URL, new ResignGameRoute());
 
 
 
