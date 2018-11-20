@@ -6,8 +6,6 @@ import com.webcheckers.model.Move;
 import com.webcheckers.model.Player;
 import com.webcheckers.model.Position;
 import org.junit.Test;
-import org.junit.internal.runners.statements.ExpectException;
-import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 public class GameCentreTest {
