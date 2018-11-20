@@ -26,12 +26,12 @@ public class GameCentreTest {
     public void isUserAvailableTest(){
         Player player = new Player("PlayerTest");
         gameCentre.addUser(player.getPlayerName());
-        assertTrue(gameCentre.isUserAvailable(player.getPlayerName()));
+        assertFalse(gameCentre.isUserAvailable("PlayerTest"));
     }
 
     @Test
     public void getPlayerTest(){
-        gameCentre.addUser("PlayerTest");
-        assertEquals(gameCentre.getPlayer("PlayerTest"),new Player("PlayerTest"));
+        gameCentre.setUserPlayerMap("PlayerTest",new Player("PlayerTest"));
+        assertEquals("PlayerTest", gameCentre.getPlayer("PlayerTest").getPlayerName());
     }
 }
