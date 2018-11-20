@@ -1,7 +1,10 @@
 package com.webcheckers.ui;
 
 import com.webcheckers.appl.GameCentre;
-import spark.*;
+import spark.ModelAndView;
+import spark.Request;
+import spark.Response;
+import spark.Route;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,8 +13,8 @@ import java.util.Map;
 
 public class GameRequestController implements Route {
 
-    private GameCentre gameCentre;
     public static Map<String, List<String>> userRequestorListMap;
+    private GameCentre gameCentre;
 
 
     public GameRequestController(GameCentre gameCentre) {

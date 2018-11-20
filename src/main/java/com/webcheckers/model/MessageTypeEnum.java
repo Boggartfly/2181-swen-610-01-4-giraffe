@@ -1,10 +1,9 @@
 package com.webcheckers.model;
 
-    public enum MessageTypeEnum {
+public enum MessageTypeEnum {
 
     info,
     error
-
 
 
 }

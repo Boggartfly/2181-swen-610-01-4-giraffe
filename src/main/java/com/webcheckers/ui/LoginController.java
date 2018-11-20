@@ -1,20 +1,20 @@
 package com.webcheckers.ui;
 
 import com.webcheckers.appl.GameCentre;
-import com.webcheckers.model.Message;
-import com.webcheckers.model.MessageTypeEnum;
-import spark.*;
+import spark.ModelAndView;
+import spark.Request;
+import spark.Response;
+import spark.TemplateViewRoute;
 
 import java.util.HashMap;
 import java.util.Map;
-
 
 
 public class LoginController implements TemplateViewRoute {
 
     public static final String LOGIN_VIEW = "login.ftl";
     public static boolean isUserValid;
-    public static String userName =null;
+    public static String userName = null;
 
     private GameCentre gameCentre;
 
@@ -28,9 +28,9 @@ public class LoginController implements TemplateViewRoute {
 
 
         Map<String, Object> vm = new HashMap<>();
-        vm.put("title","LOGIN PAGE");
+        vm.put("title", "LOGIN PAGE");
 
-        return new ModelAndView(vm,LOGIN_VIEW);
+        return new ModelAndView(vm, LOGIN_VIEW);
     }
 
 

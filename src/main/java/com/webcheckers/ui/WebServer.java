@@ -1,11 +1,11 @@
 package com.webcheckers.ui;
 
-import static spark.Spark.*;
-
 import com.webcheckers.appl.GameCentre;
 import com.webcheckers.appl.GameConstants;
 import spark.Request;
 import spark.TemplateEngine;
+
+import static spark.Spark.*;
 
 
 /**
@@ -24,17 +24,17 @@ import spark.TemplateEngine;
  *
  * <p>Design choices for how the client makes a request include:
  * <ul>
- *     <li>Request URL</li>
- *     <li>HTTP verb for request (GET, POST, PUT, DELETE and so on)</li>
- *     <li><em>Optional:</em> Inclusion of request parameters</li>
+ * <li>Request URL</li>
+ * <li>HTTP verb for request (GET, POST, PUT, DELETE and so on)</li>
+ * <li><em>Optional:</em> Inclusion of request parameters</li>
  * </ul>
  * </p>
  *
  * <p>Design choices for generating a response to a request include:
  * <ul>
- *     <li>View templates with conditional elements</li>
- *     <li>Use different view templates based on results of executing the client request</li>
- *     <li>Redirecting to a different application URL</li>
+ * <li>View templates with conditional elements</li>
+ * <li>Use different view templates based on results of executing the client request</li>
+ * <li>Redirecting to a different application URL</li>
  * </ul>
  * </p>
  *
@@ -61,6 +61,7 @@ public class WebServer {
     public static final String CHECKTURN_URL = "checkTurn";
     public static final String BACKUPMOVE_URL = "backupMove";
     public static final String SUBMITTURN_URL = "submitTurn";
+    public static final String RESIGN_GAME_URL = "resignGame";
 
 
     public static final String GET_METHOD = "GET";
@@ -78,8 +79,7 @@ public class WebServer {
     /**
      * The constructor for the Web Server.
      *
-     * @param templateEngine
-     *    The default {@link TemplateEngine} to render views.
+     * @param templateEngine The default {@link TemplateEngine} to render views.
      */
     public WebServer(
             final TemplateEngine templateEngine) {
@@ -143,22 +143,22 @@ public class WebServer {
             // ... check if new user
             System.out.println("Landing Filter");
 
-            if(validateLoggedInUser(request)){
+            if (validateLoggedInUser(request)) {
                 response.redirect("/gameLobby");
-            }else if(validateInGameUser(request)){
+            } else if (validateInGameUser(request)) {
                 response.redirect("/game");
             }
 
-         });
+        });
 
 
         before("/login", (request, response) -> {
             // ... check if new user
             System.out.println("Login Before Filter");
 
-            if(validateLoggedInUser(request)){
+            if (validateLoggedInUser(request)) {
                 response.redirect("/gameLobby");
-            }else if(validateInGameUser(request)){
+            } else if (validateInGameUser(request)) {
                 response.redirect("/game");
             }
 
@@ -166,61 +166,52 @@ public class WebServer {
 
         after("/login", (request, response) -> {
             System.out.println("Login After Filter");
-            if(!request.session().isNew() && request.queryParams().contains("username")){
-                System.out.println("User name " +request.queryParams("username"));
-            response.header("playerName",request.queryParams("username"));
-            response.cookie("playerName",request.queryParams("username"));
-            request.session().attribute("playerName",request.queryParams("username"));
-                System.out.println("After putting header and cookie ");}
+            if (!request.session().isNew() && request.queryParams().contains("username")) {
+                System.out.println("User name " + request.queryParams("username"));
+                response.header("playerName", request.queryParams("username"));
+                response.cookie("playerName", request.queryParams("username"));
+                request.session().attribute("playerName", request.queryParams("username"));
+                System.out.println("After putting header and cookie ");
+            }
 
 
         });
 
 
-        before("/gameLobby",((request, response) -> {
-            if(GameLobbyController.awaitingPlayer.contains(request.session().attribute("playerName"))){
+        before("/gameLobby", ((request, response) -> {
+            if (GameLobbyController.awaitingPlayer.contains(request.session().attribute("playerName"))) {
                 response.redirect("/game");
             }
 
 
-
         }));
 
-        before("/submitTurn",(((request, response) -> {
+        before("/submitTurn", (((request, response) -> {
             response.redirect("/game");
 
         })));
 
 
-
-
-
-
-
-
-
-
-
         // Shows the Checkers game Home page.
 
 
-        get(LANDING_URL,new LandingController(gameCentre),templateEngine);
+        get(LANDING_URL, new LandingController(gameCentre), templateEngine);
 
-        get(LOGIN_URL,new LoginController(gameCentre),templateEngine);
-        post(LOGIN_URL,new ValidateLoginController(gameCentre),templateEngine);
+        get(LOGIN_URL, new LoginController(gameCentre), templateEngine);
+        post(LOGIN_URL, new ValidateLoginController(gameCentre), templateEngine);
 
         get(SIGNOUT_URL, new SignoutController(gameCentre), templateEngine);
 
-        get(GAMELOBBY_URL,new GameLobbyController(gameCentre),templateEngine);
+        get(GAMELOBBY_URL, new GameLobbyController(gameCentre), templateEngine);
 
         //get(GAME_REQUEST_URL,new GameRequestController(gameCentre));
-        post(GAME_REQUEST_URL,new GameRequestController(gameCentre));
+        post(GAME_REQUEST_URL, new GameRequestController(gameCentre));
 
         post(GAME_REQUEST_REJECT, new RequestRejectController(gameCentre));
 
-        post(START_GAME_URL,new StartGameController(gameCentre),templateEngine);
+        post(START_GAME_URL, new StartGameController(gameCentre), templateEngine);
 
-        get(GAME_URL,new GameController(gameCentre),templateEngine);
+        get(GAME_URL, new GameController(gameCentre), templateEngine);
 
         //Validate the move
         post(VALIDATION_URL, new ValidateMoveRoute(gameCentre));
@@ -230,29 +221,30 @@ public class WebServer {
         //Validate the move
         post(SUBMITTURN_URL, new SubmitTurnRoute(gameCentre));
         //Validate the move
-        post(BACKUPMOVE_URL, new BackUpMoveRoute());
-
+        post(BACKUPMOVE_URL, new BackUpMoveRoute(gameCentre));
+        //Resign the game
+        //post(RESIGN_GAME_URL, new ResignGameRoute());
 
 
     }
 
-    public boolean validateLoggedInUser(Request request){
+    public boolean validateLoggedInUser(Request request) {
 
-        if(!request.session().isNew() && request.session().attributes().contains(GameConstants.playerHeaderName)){
+        if (!request.session().isNew() && request.session().attributes().contains(GameConstants.playerHeaderName)) {
             return true;
-        }else {
+        } else {
             return false;
         }
 
     }
 
-    public boolean validateInGameUser(Request request){
+    public boolean validateInGameUser(Request request) {
 
-        if(!request.session().isNew() &&
+        if (!request.session().isNew() &&
                 request.session().attributes().contains(GameConstants.playerHeaderName) &&
-                request.session().attributes().contains(GameConstants.opponentHeaderName)){
+                request.session().attributes().contains(GameConstants.opponentHeaderName)) {
             return true;
-        }else {
+        } else {
             return false;
         }
 

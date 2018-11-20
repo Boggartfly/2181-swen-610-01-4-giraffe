@@ -27,76 +27,76 @@ public class Move {
     }
 
 
-    public boolean isValidMove(String playerType){
-        switch (playerType){
+    public boolean isValidMove(String playerType) {
+        switch (playerType) {
             case "player":
-                if(this.getEnd().getRow() == this.getStart().getRow() +1
-                        && Math.abs(this.getEnd().getCell()-this.getStart().getCell()) ==1){
+                if (this.getEnd().getRow() == this.getStart().getRow() + 1
+                        && Math.abs(this.getEnd().getCell() - this.getStart().getCell()) == 1) {
                     return true;
 
-                }else {
+                } else {
                     return false;
                 }
             case "opponent":
-                if(this.getEnd().getRow() == this.getStart().getRow() -1
-                        && Math.abs(this.getEnd().getCell()-this.getStart().getCell()) ==1){
+                if (this.getEnd().getRow() == this.getStart().getRow() - 1
+                        && Math.abs(this.getEnd().getCell() - this.getStart().getCell()) == 1) {
                     return true;
 
-                }else {
+                } else {
                     return false;
                 }
 
-                default:
-                    return false;
+            default:
+                return false;
 
         }
     }
 
-    public boolean isValidJumpMove(String playerType ){
+    public boolean isValidJumpMove(String playerType) {
 
-        switch (playerType){
+        switch (playerType) {
             case "player":
-                if(this.getEnd().getRow() == this.getStart().getRow() + 2
-                        && Math.abs(this.getEnd().getCell()-this.getStart().getCell()) ==2){
+                if (this.getEnd().getRow() == this.getStart().getRow() + 2
+                        && Math.abs(this.getEnd().getCell() - this.getStart().getCell()) == 2) {
                     return true;
-                }else {
+                } else {
                     return false;
                 }
 
             case "opponent":
-                if (this.getEnd().getRow() == this.getStart().getRow() -2
-                        && Math.abs(this.getEnd().getCell()-this.getStart().getCell()) ==2){
+                if (this.getEnd().getRow() == this.getStart().getRow() - 2
+                        && Math.abs(this.getEnd().getCell() - this.getStart().getCell()) == 2) {
                     return true;
-                }else {
+                } else {
                     return false;
                 }
 
-                default:
-                    return false;
+            default:
+                return false;
 
 
         }
 
     }
 
-    public boolean isKing(String playerType){
-        switch (playerType){
+    public boolean isKing(String playerType) {
+        switch (playerType) {
             case "player":
-                if(this.getEnd().getRow() ==7){
+                if (this.getEnd().getRow() == 7) {
                     return true;
-                }else {
+                } else {
                     return false;
                 }
 
             case "opponent":
-                if(this.getEnd().getRow() ==0) {
+                if (this.getEnd().getRow() == 0) {
                     return true;
-                }else {
+                } else {
                     return false;
                 }
 
-                default:
-                    return false;
+            default:
+                return false;
         }
     }
 }

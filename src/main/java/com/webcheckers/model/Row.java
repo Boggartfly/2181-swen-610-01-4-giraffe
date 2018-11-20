@@ -8,8 +8,8 @@ import java.util.List;
 public class Row implements Iterable<Space> {
 
 
-    private List<Space> spaces ;
-    private int index ;
+    private List<Space> spaces;
+    private int index;
 
 
     public Row(int index) {
@@ -18,34 +18,31 @@ public class Row implements Iterable<Space> {
 
         spaces = new ArrayList<>();
 
-        Position p = new Position(0,0);
+        Position p = new Position(0, 0);
 
         p.setRow(index);
 
-        for(int counter=0; counter<=7; counter++){
-                p.setCell(counter)  ;
+        for (int counter = 0; counter <= 7; counter++) {
+            p.setCell(counter);
 
-                if(p.isValidPosition() && p.initialPosition()){
-                    if(p.isOpponentsPosition()) {
-                        add(new Space(counter, true, new Piece(PieceTypeEnum.SINGLE, PieceColorEnum.WHITE)));
-                    }
-                    else {
+            if (p.isValidPosition() && p.initialPosition()) {
+                if (p.isOpponentsPosition()) {
+                    add(new Space(counter, true, new Piece(PieceTypeEnum.SINGLE, PieceColorEnum.WHITE)));
+                } else {
 
-                        add(new Space(counter, true, new Piece(PieceTypeEnum.SINGLE, PieceColorEnum.RED)));
-                    }
+                    add(new Space(counter, true, new Piece(PieceTypeEnum.SINGLE, PieceColorEnum.RED)));
                 }
-                else if(p.isValidPosition()) {
-                    add(new Space(counter, true, null));
-                }
-                else {
-                    add(new Space(counter, false, null));
-                }
+            } else if (p.isValidPosition()) {
+                add(new Space(counter, true, null));
+            } else {
+                add(new Space(counter, false, null));
+            }
 
         }
 
     }
 
-    private void add(Space space){
+    private void add(Space space) {
 
         spaces.add(space);
     }
