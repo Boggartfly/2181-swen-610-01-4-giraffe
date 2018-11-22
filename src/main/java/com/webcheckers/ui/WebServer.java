@@ -8,6 +8,7 @@ import spark.Request;
 import spark.TemplateEngine;
 
 
+
 /**
  * The server that initializes the set of HTTP request handlers.
  * This defines the <em>web application interface</em> for this
@@ -62,6 +63,10 @@ public class WebServer {
     public static final String BACKUPMOVE_URL = "backupMove";
     public static final String SUBMITTURN_URL = "submitTurn";
     public static final String RESIGN_GAME_URL = "resignGame";
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
 
 
     public static final String GET_METHOD = "GET";
@@ -177,11 +182,10 @@ public class WebServer {
 
         });
 
-
-        before("/gameLobby",((request, response) -> {
-            if(GameLobbyController.awaitingPlayer.contains(request.session().attribute("playerName"))){
-                response.redirect("/game");
-            }
+       before("/gameLobby",((request, response) -> {
+           if(GameLobbyController.awaitingPlayer.contains(request.session().attribute("playerName"))){
+               response.redirect("/game");
+           }
 
 
 
@@ -235,6 +239,9 @@ public class WebServer {
         //Resign the game
         post(RESIGN_GAME_URL, new ResignGameRoute());
 
+
+        //resign game
+        get(RESIGN_GAME_URL, new ResignGameRoute(gameCentre));
 
 
 

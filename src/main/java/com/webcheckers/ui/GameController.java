@@ -17,7 +17,7 @@ public class GameController implements TemplateViewRoute {
     private GameCentre gameCentre;
     private Player player;
     private Player opponent;
-
+    static Boolean winner = false;
     public GameController(GameCentre gameCentre) {
         this.gameCentre = gameCentre;
     }
@@ -39,7 +39,16 @@ public class GameController implements TemplateViewRoute {
 
         Map<String, Object> vm = new HashMap<>();
 
+
+
         if(game.getPlayer().getPlayerName().equalsIgnoreCase(playerName)){
+            if(game.getWinner() == gameCentre.getPlayer(playerName)){
+                winner = true;
+
+                gameCentre.removeGame(game);
+                response.redirect("/gameLobby");
+
+            }
             vm.put("title", "Welcome to Game");
             vm.put("currentPlayer", game.getPlayer());
             vm.put("playerName", game.getPlayer().getPlayerName());
@@ -49,8 +58,14 @@ public class GameController implements TemplateViewRoute {
             vm.put("isMyTurn", game.getMyTurn()==0 ? true:false);
             vm.put("message",game.getPlayer().getMessage());
             vm.put("board",game.getBoard());
+
             return new ModelAndView(vm , "game.ftl");
         } else {
+            if(game.getWinner() == gameCentre.getPlayer(playerName)){
+                winner = true;
+                gameCentre.removeGame(game);
+                response.redirect("/gameLobby");
+            }
             vm.put("title", "Welcome to Game");
             vm.put("currentPlayer", game.getOpponent());
             vm.put("playerName", game.getOpponent().getPlayerName());
