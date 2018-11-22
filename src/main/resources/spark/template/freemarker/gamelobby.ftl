@@ -17,6 +17,12 @@
 
     <div class="body">
         <div align="center">
+             <#if gameWon??>
+                <script>
+                    alert("Your opponent has resigned, you won the game!");
+                 </script>
+             </#if>
+
             <#if rejectedMessage??>
                 <div class="error">${rejectedMessage}</div><br>
             </#if>

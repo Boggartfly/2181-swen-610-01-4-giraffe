@@ -9,6 +9,7 @@ public class Game {
     private Player opponent;
     private Board board;
     private int myTurn;
+    private Player winner;
 
 
      public Game(Player player, Player opponent){
@@ -56,6 +57,14 @@ public class Game {
 
     public Board getBoard() {
         return board;
+    }
+
+    public Player getWinner() {
+        return winner;
+    }
+
+    public void setWinner(Player winner) {
+        this.winner = winner;
     }
 
     @Override

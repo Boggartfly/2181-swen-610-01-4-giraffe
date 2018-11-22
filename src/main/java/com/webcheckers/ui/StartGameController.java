@@ -71,6 +71,11 @@ public class StartGameController implements TemplateViewRoute {
 
         gameCentre.removeAvailableUser(opponentName);
 
+        GameRequestController.userRequestorListMap.remove(playerName);
+        GameRequestController.userRequestorListMap.remove(opponentName);
+
+
+
         Game game = new Game(player,opponent);
         gameCentre.addGame(game);
 

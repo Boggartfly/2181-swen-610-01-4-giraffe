@@ -21,6 +21,10 @@ public class CheckTurnRoute implements Route {
 
         Game game = gameCenter.getPlayerGame(gameCenter.getPlayer(playerName));
 
+        //if(game.getWinner() == gameCenter.getPlayer(playerName)){
+        //    return true;
+        //}
+
         if(game.getMyTurn()==0 && game.getPlayer().getPlayerName().equalsIgnoreCase(playerName)){
             return true;
         }
