@@ -232,12 +232,10 @@ public class WebServer {
         //Validate the move
         post(SUBMITTURN_URL, new SubmitTurnRoute(gameCentre));
         //Validate the move
-        post(BACKUPMOVE_URL, new BackUpMoveRoute());
+        post(BACKUPMOVE_URL, new BackUpMoveRoute(gameCentre));
 
         //resign game
         get(RESIGN_GAME_URL, new ResignGameRoute(gameCentre));
-
-
 
     }
 
