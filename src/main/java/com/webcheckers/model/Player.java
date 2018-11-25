@@ -33,7 +33,7 @@ public class Player {
         this.opponentName = firstPlayer.playerName;
         this.opponentColor = firstPlayer.playerColor;
         this.board = firstPlayer.board;
-        this.isMyTurn = firstPlayer.isMyTurn ? false : true;
+        this.isMyTurn = !firstPlayer.isMyTurn;
         this.message = new Message("Hello", MessageTypeEnum.info);
 
 

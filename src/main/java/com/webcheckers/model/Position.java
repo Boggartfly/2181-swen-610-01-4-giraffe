@@ -30,28 +30,16 @@ public class Position {
 
         if ((row % 2 == 0) && (cell % 2 == 1)) {
             return true;
-        } else if ((row % 2 == 1) && (cell % 2 == 0)) {
-            return true;
-        } else {
-            return false;
-        }
+        } else return (row % 2 == 1) && (cell % 2 == 0);
     }
 
     public boolean initialPosition() {
 
-        if (row <= 2 || row >= 5) {
-            return true;
-        } else {
-            return false;
-        }
+        return row <= 2 || row >= 5;
     }
 
     public boolean isOpponentsPosition() {
-        if (row >= 5) {
-            return true;
-        } else {
-            return false;
-        }
+        return row >= 5;
     }
 
     @Override

@@ -14,10 +14,11 @@ import java.util.Map;
 public class GameController implements TemplateViewRoute {
 
     final static String GAME_VIEW = "game.ftl";
+    static Boolean winner = false;
     private GameCentre gameCentre;
     private Player player;
     private Player opponent;
-    static Boolean winner = false;
+
     public GameController(GameCentre gameCentre) {
         this.gameCentre = gameCentre;
     }
@@ -40,8 +41,7 @@ public class GameController implements TemplateViewRoute {
         Map<String, Object> vm = new HashMap<>();
 
 
-
-        if(game.getPlayer().getPlayerName().equalsIgnoreCase(playerName)){
+        if (game.getPlayer().getPlayerName().equalsIgnoreCase(playerName)) {
             redirectPlayer(response, playerName, game, vm);
             vm.put("title", "Welcome to Game");
             vm.put("currentPlayer", game.getPlayer());
@@ -50,10 +50,10 @@ public class GameController implements TemplateViewRoute {
             vm.put("opponentName", game.getPlayer().getOpponentName());
             vm.put("opponentColor", game.getPlayer().getOpponentColor());
             vm.put("isMyTurn", game.getMyTurn() == 0);
-            vm.put("message",game.getPlayer().getMessage());
-            vm.put("board",game.getBoard());
+            vm.put("message", game.getPlayer().getMessage());
+            vm.put("board", game.getBoard());
 
-            return new ModelAndView(vm , "game.ftl");
+            return new ModelAndView(vm, "game.ftl");
         } else {
             redirectPlayer(response, playerName, game, vm);
             vm.put("title", "Welcome to Game");
@@ -71,7 +71,7 @@ public class GameController implements TemplateViewRoute {
     }
 
     private void redirectPlayer(Response response, String playerName, Game game, Map<String, Object> vm) {
-        if(game.getWinner() == gameCentre.getPlayer(playerName)){
+        if (game.getWinner() == gameCentre.getPlayer(playerName)) {
             winner = true;
             gameCentre.removeGame(game);
             response.redirect("/gameLobby");

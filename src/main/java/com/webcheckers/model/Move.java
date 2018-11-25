@@ -30,21 +30,11 @@ public class Move {
     public boolean isValidMove(String playerType) {
         switch (playerType) {
             case "player":
-                if (this.getEnd().getRow() == this.getStart().getRow() + 1
-                        && Math.abs(this.getEnd().getCell() - this.getStart().getCell()) == 1) {
-                    return true;
-
-                } else {
-                    return false;
-                }
+                return this.getEnd().getRow() == this.getStart().getRow() + 1
+                        && Math.abs(this.getEnd().getCell() - this.getStart().getCell()) == 1;
             case "opponent":
-                if (this.getEnd().getRow() == this.getStart().getRow() - 1
-                        && Math.abs(this.getEnd().getCell() - this.getStart().getCell()) == 1) {
-                    return true;
-
-                } else {
-                    return false;
-                }
+                return this.getEnd().getRow() == this.getStart().getRow() - 1
+                        && Math.abs(this.getEnd().getCell() - this.getStart().getCell()) == 1;
 
             default:
                 return false;
@@ -56,20 +46,12 @@ public class Move {
 
         switch (playerType) {
             case "player":
-                if (this.getEnd().getRow() == this.getStart().getRow() + 2
-                        && Math.abs(this.getEnd().getCell() - this.getStart().getCell()) == 2) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return this.getEnd().getRow() == this.getStart().getRow() + 2
+                        && Math.abs(this.getEnd().getCell() - this.getStart().getCell()) == 2;
 
             case "opponent":
-                if (this.getEnd().getRow() == this.getStart().getRow() - 2
-                        && Math.abs(this.getEnd().getCell() - this.getStart().getCell()) == 2) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return this.getEnd().getRow() == this.getStart().getRow() - 2
+                        && Math.abs(this.getEnd().getCell() - this.getStart().getCell()) == 2;
 
             default:
                 return false;
@@ -82,18 +64,10 @@ public class Move {
     public boolean isKing(String playerType) {
         switch (playerType) {
             case "player":
-                if (this.getEnd().getRow() == 7) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return this.getEnd().getRow() == 7;
 
             case "opponent":
-                if (this.getEnd().getRow() == 0) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return this.getEnd().getRow() == 0;
 
             default:
                 return false;

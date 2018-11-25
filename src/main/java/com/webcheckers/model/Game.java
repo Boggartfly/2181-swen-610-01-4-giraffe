@@ -44,7 +44,7 @@ public class Game {
 
     public boolean isOpponentAvailable() {
 
-        return opponent != null ? true : false;
+        return opponent != null;
     }
 
     public int getMyTurn() {

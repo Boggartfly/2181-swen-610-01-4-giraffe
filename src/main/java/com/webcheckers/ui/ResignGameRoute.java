@@ -1,16 +1,10 @@
 package com.webcheckers.ui;
 
 import com.webcheckers.appl.GameCentre;
-import com.webcheckers.appl.GameConstants;
 import com.webcheckers.model.Game;
-import com.webcheckers.model.Message;
-import com.webcheckers.model.MessageTypeEnum;
-import com.webcheckers.model.Player;
 import spark.Request;
 import spark.Response;
 import spark.Route;
-
-import java.util.logging.Logger;
 
 public class ResignGameRoute implements Route {
 
@@ -29,7 +23,6 @@ public class ResignGameRoute implements Route {
         Game game = gameCentre.getPlayerGame(gameCentre.getPlayer(player));
 
 
-
         String player2 = gameCentre.getPlayer(player).getPlayerName();
 
         String playerName = gameCentre.getPlayer(player).getPlayerName();
@@ -43,8 +36,7 @@ public class ResignGameRoute implements Route {
         gameCentre.addAvailableUser(opponentName);
 
         if (GameRequestController.userRequestorListMap.get(player) != null)
-            if (GameRequestController.userRequestorListMap.get(player).contains(opponentName))
-                GameRequestController.userRequestorListMap.get(player).remove(opponentName);
+            GameRequestController.userRequestorListMap.get(player).remove(opponentName);
 
         game.setWinner(gameCentre.getPlayer(opponentName));
 

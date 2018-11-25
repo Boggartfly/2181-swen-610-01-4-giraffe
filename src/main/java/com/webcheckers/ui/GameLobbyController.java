@@ -26,19 +26,18 @@ public class GameLobbyController implements TemplateViewRoute {
     public ModelAndView handle(Request request, Response response) {
 
         String playerName = request.session().attribute("playerName");
-        vm.put("title","Lobby Page");
+        vm.put("title", "Lobby Page");
         vm.put("users", gameCentre.getAvailableuserSet());
         vm.put("currentUser", playerName);
         vm.remove("errorMessage");
 
-        if (GameController.winner){
+        if (GameController.winner) {
             vm.put("gameWon", true);
             GameController.winner = false;
-        }
-        else
+        } else
             vm.remove("gameWon");
 
-        if(StartGameController.unavailable){
+        if (StartGameController.unavailable) {
             GameLobbyController.vm.put("errorMessage", "The request is no longer available");
             StartGameController.unavailable = false;
         }

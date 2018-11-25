@@ -1,8 +1,8 @@
-define(function(require){
+define(function (require) {
 
     // query the server if the user is authentic
     jQuery.post('/authenticate', '',
-        function(isAuthenticated, textStatus, jqXHR) {
+        function (isAuthenticated, textStatus, jqXHR) {
             console.info('Is user Authenticated =' + isAuthenticated);
             if (isAuthenticated) {
                 window.location.replace('/lobby');
@@ -15,4 +15,4 @@ define(function(require){
 
     // export class constructor
     return ValidateLogin;
-}
+};

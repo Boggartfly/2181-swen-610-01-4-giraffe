@@ -19,7 +19,7 @@ public class GameRequestController implements Route {
 
     public GameRequestController(GameCentre gameCentre) {
         this.gameCentre = gameCentre;
-        this.userRequestorListMap = new HashMap<>();
+        userRequestorListMap = new HashMap<>();
 
     }
 

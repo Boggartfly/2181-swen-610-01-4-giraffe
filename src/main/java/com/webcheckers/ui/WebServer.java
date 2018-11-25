@@ -176,11 +176,10 @@ public class WebServer {
 
         });
 
-       before("/gameLobby",((request, response) -> {
-           if(GameLobbyController.awaitingPlayer.contains(request.session().attribute("playerName"))){
-               response.redirect("/game");
-           }
-
+        before("/gameLobby", ((request, response) -> {
+            if (GameLobbyController.awaitingPlayer.contains(request.session().attribute("playerName"))) {
+                response.redirect("/game");
+            }
 
 
         }));
@@ -229,28 +228,19 @@ public class WebServer {
         get(RESIGN_GAME_URL, new ResignGameRoute(gameCentre));
 
 
-
     }
 
     public boolean validateLoggedInUser(Request request) {
 
-        if (!request.session().isNew() && request.session().attributes().contains(GameConstants.playerHeaderName)) {
-            return true;
-        } else {
-            return false;
-        }
+        return !request.session().isNew() && request.session().attributes().contains(GameConstants.playerHeaderName);
 
     }
 
     public boolean validateInGameUser(Request request) {
 
-        if (!request.session().isNew() &&
+        return !request.session().isNew() &&
                 request.session().attributes().contains(GameConstants.playerHeaderName) &&
-                request.session().attributes().contains(GameConstants.opponentHeaderName)) {
-            return true;
-        } else {
-            return false;
-        }
+                request.session().attributes().contains(GameConstants.opponentHeaderName);
 
     }
 

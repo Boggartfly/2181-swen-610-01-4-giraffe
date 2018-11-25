@@ -23,10 +23,6 @@ public class CheckTurnRoute implements Route {
 
         if (game.getMyTurn() == 0 && game.getPlayer().getPlayerName().equalsIgnoreCase(playerName)) {
             return true;
-        } else if (game.getMyTurn() == 1 && game.getOpponent().getPlayerName().equalsIgnoreCase(playerName)) {
-            return true;
-        } else {
-            return false;
-        }
+        } else return game.getMyTurn() == 1 && game.getOpponent().getPlayerName().equalsIgnoreCase(playerName);
     }
 }

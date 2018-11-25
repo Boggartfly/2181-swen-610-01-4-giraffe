@@ -36,8 +36,7 @@ public class RequestRejectController implements Route {
         player = request.session().attribute("playerName");
         requestor = request.queryParams("requestor");
         if (GameRequestController.userRequestorListMap.get(player) != null)
-            if (GameRequestController.userRequestorListMap.get(player).contains(requestor))
-                GameRequestController.userRequestorListMap.get(player).remove(requestor);
+            GameRequestController.userRequestorListMap.get(player).remove(requestor);
 
         GameLobbyController.vm.put("requests", GameRequestController.userRequestorListMap);
         response.redirect("/gameLobby");
