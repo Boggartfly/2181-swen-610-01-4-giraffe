@@ -42,13 +42,7 @@ public class GameController implements TemplateViewRoute {
 
 
         if(game.getPlayer().getPlayerName().equalsIgnoreCase(playerName)){
-            if(game.getWinner() == gameCentre.getPlayer(playerName)){
-                winner = true;
-
-                gameCentre.removeGame(game);
-                response.redirect("/gameLobby");
-
-            }
+            redirectPlayer(response, playerName, game, vm);
             vm.put("title", "Welcome to Game");
             vm.put("currentPlayer", game.getPlayer());
             vm.put("playerName", game.getPlayer().getPlayerName());
@@ -61,11 +55,7 @@ public class GameController implements TemplateViewRoute {
 
             return new ModelAndView(vm , "game.ftl");
         } else {
-            if(game.getWinner() == gameCentre.getPlayer(playerName)){
-                winner = true;
-                gameCentre.removeGame(game);
-                response.redirect("/gameLobby");
-            }
+            redirectPlayer(response, playerName, game, vm);
             vm.put("title", "Welcome to Game");
             vm.put("currentPlayer", game.getOpponent());
             vm.put("playerName", game.getOpponent().getPlayerName());
@@ -78,6 +68,16 @@ public class GameController implements TemplateViewRoute {
             return new ModelAndView(vm, "game.ftl");
 
         }
+    }
+
+    private void redirectPlayer(Response response, String playerName, Game game, Map<String, Object> vm) {
+        if(game.getWinner() == gameCentre.getPlayer(playerName)){
+            winner = true;
+            gameCentre.removeGame(game);
+            response.redirect("/gameLobby");
+
+        }
+
     }
 
 }
