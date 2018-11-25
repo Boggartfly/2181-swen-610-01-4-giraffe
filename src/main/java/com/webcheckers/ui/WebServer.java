@@ -63,7 +63,6 @@ public class WebServer {
     public static final String SUBMITTURN_URL = "submitTurn";
     public static final String RESIGN_GAME_URL = "resignGame";
 
-
     public static final String GET_METHOD = "GET";
     public static final String POST_METHOD = "POST";
     //
@@ -177,11 +176,11 @@ public class WebServer {
 
         });
 
+       before("/gameLobby",((request, response) -> {
+           if(GameLobbyController.awaitingPlayer.contains(request.session().attribute("playerName"))){
+               response.redirect("/game");
+           }
 
-        before("/gameLobby", ((request, response) -> {
-            if (GameLobbyController.awaitingPlayer.contains(request.session().attribute("playerName"))) {
-                response.redirect("/game");
-            }
 
 
         }));
@@ -223,7 +222,12 @@ public class WebServer {
         //Validate the move
         post(BACKUPMOVE_URL, new BackUpMoveRoute(gameCentre));
         //Resign the game
-        //post(RESIGN_GAME_URL, new ResignGameRoute());
+        post(RESIGN_GAME_URL, new ResignGameRoute(gameCentre));
+
+
+        //resign game
+        get(RESIGN_GAME_URL, new ResignGameRoute(gameCentre));
+
 
 
     }
