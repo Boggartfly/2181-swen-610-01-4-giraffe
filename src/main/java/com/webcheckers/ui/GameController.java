@@ -49,7 +49,7 @@ public class GameController implements TemplateViewRoute {
             vm.put("playerColor", game.getPlayer().getPlayerColor());
             vm.put("opponentName", game.getPlayer().getOpponentName());
             vm.put("opponentColor", game.getPlayer().getOpponentColor());
-            vm.put("isMyTurn", game.getMyTurn()==0 ? true:false);
+            vm.put("isMyTurn", game.getMyTurn() == 0);
             vm.put("message",game.getPlayer().getMessage());
             vm.put("board",game.getBoard());
 
@@ -62,7 +62,7 @@ public class GameController implements TemplateViewRoute {
             vm.put("playerColor", game.getOpponent().getPlayerColor());
             vm.put("opponentName", game.getOpponent().getOpponentName());
             vm.put("opponentColor", game.getOpponent().getOpponentColor());
-            vm.put("isMyTurn", game.getMyTurn() == 1 ? true : false);
+            vm.put("isMyTurn", game.getMyTurn() == 1);
             vm.put("message", game.getPlayer().getMessage());
             vm.put("board", game.getBoard());
             return new ModelAndView(vm, "game.ftl");
