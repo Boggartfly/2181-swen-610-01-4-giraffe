@@ -17,6 +17,12 @@
 
     <div class="body">
         <div align="center">
+            <#if gameWon??>
+                <script>
+                    alert("Your opponent has resigned, you won the game!");
+                </script>
+            </#if>
+
             <#if rejectedMessage??>
                 <div class="error">${rejectedMessage}</div><br>
             </#if>
@@ -28,42 +34,42 @@
             <form id="requstForm" action="/requestMatch" method="POST">
 
 
-            <#list users as user>
-                <#if user != currentUser>
-                    <!--#if requestedUser?seq_contains(user)>-->
+                <#list users as user>
+                    <#if user != currentUser>
+                        <!--#if requestedUser?seq_contains(user)>-->
                         <input type="radio" name="opponent"
-                               onclick="document.getElementById('submitRequest').removeAttribute('disabled')"
-                               value=${user}> ${user}<br>
+                        onclick="document.getElementById('submitRequest').removeAttribute('disabled')"
+                        value=${user}> ${user}<br>
 
-                </#if>
-                <!--/#if>-->
-            </#list>
+                    </#if>
+                    <!--/#if>-->
+                </#list>
                 <input type="submit" id="submitRequest" value="Send Request" disabled="true">
             </form>
 
 
-        <#if requests??>
-            <#list requests as requested, requestors>
-                <#if requested == currentUser>
-                    <#list requestors as requestor>
-     <br><br><br>Match Requests<br><br>
-                    <p>
-                        ${requestor}
-                    </p>
-<form action="/startGame" method="POST">
-    <input type="hidden" name="requestor" value=${requestor}>
-    <input type="submit" name="handleRequest" value="Accept">
-</form>
-    <form action="/rejectMatch" method="POST">
-        <input type="hidden" name="requestor" value=${requestor}>
-        <input type="submit" name="handleRequest" value="Reject"><br>
-    </form>
+            <#if requests??>
+                <#list requests as requested, requestors>
+                    <#if requested == currentUser>
+                        <#list requestors as requestor>
+                            <br><br><br>Match Requests<br><br>
+                            <p>
+                            ${requestor}
+                            </p>
+                            <form action="/startGame" method="POST">
+                            <input type="hidden" name="requestor" value=${requestor}>
+                            <input type="submit" name="handleRequest" value="Accept">
+                            </form>
+                            <form action="/rejectMatch" method="POST">
+                            <input type="hidden" name="requestor" value=${requestor}>
+                            <input type="submit" name="handleRequest" value="Reject"><br>
+                            </form>
 
 
-                    </#list>
-                </#if>
-            </#list>
-        </#if>
+                        </#list>
+                    </#if>
+                </#list>
+            </#if>
 
         </div>
     </div>

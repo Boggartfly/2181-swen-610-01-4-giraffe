@@ -14,12 +14,13 @@
     <div class="body">
         <div align="center">
             <p>Enter your User Name below!</p>
-        <#if message??>
+            <#if message??>
             <div class="error">${message}</div><br>
-        <script data-main="js/game/index" src="js/require.js"></script>
-        </#if>
+            <script data-main="js/game/index" src="js/require.js"></script>
+            </#if>
             <form action="/login" method="POST">
-                <input type="text" name="userName" pattern="[a-zA-Z0-9-]+" title="Username can only contain letters and numbers" required><br><br>
+                <input type="text" name="userName" pattern="[a-zA-Z0-9-]+"
+                       title="Username can only contain letters and numbers" required><br><br>
                 <input type="submit" value="login">
             </form>
         </div>

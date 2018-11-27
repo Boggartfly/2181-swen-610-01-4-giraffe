@@ -283,7 +283,7 @@ var requirejs, require, define;
                         this.map.normalizedMap = o, this.init([], function () {
                             return e
                         }, null, {enabled: !0, ignore: !0})
-                    })), d = getOwn(S, o.id), void(d && (this.depMaps.push(o), this.events.error && d.on("error", bind(this, function (e) {
+                    })), d = getOwn(S, o.id), void (d && (this.depMaps.push(o), this.events.error && d.on("error", bind(this, function (e) {
                         this.emit("error", e)
                     })), d.enable()))) : f ? (this.map.url = q.nameToUrl(f), void this.load()) : (n = bind(this, function (e) {
                         this.init([], function () {
@@ -308,7 +308,7 @@ var requirejs, require, define;
                 k[this.map.id] = this, this.enabled = !0, this.enabling = !0, each(this.depMaps, bind(this, function (e, t) {
                     var i, r, n;
                     if ("string" == typeof e) {
-                        if (e = a(e, this.map.isDefine ? this.map : this.map.parentMap, !1, !this.skipMap), this.depMaps[t] = e, n = getOwn(E, e.id)) return void(this.depExports[t] = n(this));
+                        if (e = a(e, this.map.isDefine ? this.map : this.map.parentMap, !1, !this.skipMap), this.depMaps[t] = e, n = getOwn(E, e.id)) return void (this.depExports[t] = n(this));
                         this.depCount += 1, u(e, "defined", bind(this, function (e) {
                             this.undefed || (this.defineDep(t, e), this.check())
                         })), this.errback ? u(e, "error", bind(this, this.errback)) : this.events.error && u(e, "error", bind(this, function (e) {

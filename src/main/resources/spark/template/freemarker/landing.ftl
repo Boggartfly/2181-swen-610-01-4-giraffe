@@ -6,18 +6,18 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-  <div class="page">
-  
+<div class="page">
+
     <h1>Web Checkers</h1>
 
     <div class="body">
         <div align="center">
             <p>Welcome to the world of online Checkers.<br>
-            <a href="/login">Click Here to Login</a>
+                <a href="/login">Click Here to Login</a>
 
         </div>
     </div>
-    
-  </div>
+
+</div>
 </body>
 </html>
