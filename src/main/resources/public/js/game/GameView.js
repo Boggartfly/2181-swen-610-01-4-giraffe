@@ -248,8 +248,10 @@ define(function(require){
      * updated Game view from the server.
      */
     this.resignGame = function resignGame() {
+
+
       // TODO
-      alert('NYI: Resign action');
+      alert('NYI: Test action');
     }
 
     // Private (internal) functions
