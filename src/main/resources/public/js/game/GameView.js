@@ -415,11 +415,13 @@ define(function (require) {
     /**
      * Gets a jQuery element for a specific position.
      */
+
     function getSpace$(position) {
         var selector =
             'tr[data-row=' + position.row
             + '] td[data-cell=' + position.cell + ']';
         return jQuery(selector);
+
     }
 
     /**

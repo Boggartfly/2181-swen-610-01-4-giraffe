@@ -18,7 +18,7 @@ public class GameCentre {
     private static Set<Game> gameList;
     private Set<String> availableuserSet;
 
-    private Map<Player, List<Move>> playerMoves;
+    private  Map<Player, List<Move>> playerMoves;
 
 
     public GameCentre() {
@@ -51,7 +51,11 @@ public class GameCentre {
 
     public Move getPlayerMove(Player player) {
 
-        return playerMoves.get(player).stream().findFirst().get();
+        if(playerMoves.get(player)!=null) {
+
+            return playerMoves.get(player).stream().findFirst().get();
+        }else
+            return null;
     }
 
     public void removePlayerMove(Player player, Move move) {
@@ -59,6 +63,17 @@ public class GameCentre {
         playerMoves.get(player).
                 remove(playerMoves.get(player).stream().filter(move1 -> move1.getStart() == move.getStart() && move1.getEnd() == move.getEnd()).findFirst().get());
 
+    }
+
+    public void removePlayerMoves(Player player){
+
+        playerMoves.put(player,null);
+
+    }
+
+    public List<Move> getPlayerMoves(Player player){
+
+        return playerMoves.get(player);
     }
 
 
@@ -105,8 +120,6 @@ public class GameCentre {
         } else {
             return null;
         }
-
-
     }
 
     public void setUserPlayerMap(String playerName, Player player) {

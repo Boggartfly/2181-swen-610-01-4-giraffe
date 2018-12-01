@@ -42,7 +42,36 @@ public class Move {
         }
     }
 
-    public boolean isValidJumpMove(String playerType) {
+
+    public boolean isValidMove(String playerType,PieceTypeEnum pieceTypeEnum){
+
+        switch (pieceTypeEnum){
+
+            case SINGLE:
+                return isValidMove(playerType);
+
+            case KING:
+                if((this.getEnd().getRow() == this.getStart().getRow() +1
+                    && Math.abs(this.getEnd().getCell()-this.getStart().getCell()) ==1)
+                    || (this.getEnd().getRow() == this.getStart().getRow() -1
+                    && Math.abs(this.getEnd().getCell()-this.getStart().getCell()) ==1)){
+                        return true;
+
+                    }else {
+                       return false;
+
+                    }
+            default:
+                return false;
+        }
+
+
+    }
+
+    
+
+    public boolean isValidJumpMove(String playerType ){
+
 
         switch (playerType) {
             case "player":
@@ -53,10 +82,29 @@ public class Move {
                 return this.getEnd().getRow() == this.getStart().getRow() - 2
                         && Math.abs(this.getEnd().getCell() - this.getStart().getCell()) == 2;
 
+                default:
+                    return false;
+        }
+
+
+    }
+
+    public boolean isValidJumpMove(String playerType , PieceTypeEnum pieceTypeEnum ){
+
+        switch (pieceTypeEnum){
+            case SINGLE:
+                return isValidJumpMove(playerType);
+            case KING:
+                if( Math.abs(this.getEnd().getRow()-this.getStart().getRow()) ==2
+                        && Math.abs(this.getEnd().getCell()-this.getStart().getCell()) ==2){
+                    return true;
+                }else {
+                    return false;
+                }
+
+
             default:
                 return false;
-
-
         }
 
     }
@@ -64,13 +112,15 @@ public class Move {
     public boolean isKing(String playerType) {
         switch (playerType) {
             case "player":
-                return this.getEnd().getRow() == 7;
+
+                return this.getEnd().getRow()==7 ? true:false;
 
             case "opponent":
-                return this.getEnd().getRow() == 0;
+                return this.getEnd().getRow() ==0 ? true :false;
 
-            default:
-                return false;
+             default:
+                 return false;
+
         }
     }
 }

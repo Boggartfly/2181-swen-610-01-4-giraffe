@@ -38,6 +38,7 @@
                     <#if user != currentUser>
                         <!--#if requestedUser?seq_contains(user)>-->
                         <input type="radio" name="opponent"
+
                         onclick="document.getElementById('submitRequest').removeAttribute('disabled')"
                         value=${user}> ${user}<br>
 

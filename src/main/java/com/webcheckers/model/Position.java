@@ -6,6 +6,9 @@ public class Position {
     private int cell;
 
     public Position(int row, int cell) {
+        if(row > 7 || cell >7 || row <0 || cell <0 ){
+            throw new IllegalArgumentException();
+        }
         this.row = row;
         this.cell = cell;
     }

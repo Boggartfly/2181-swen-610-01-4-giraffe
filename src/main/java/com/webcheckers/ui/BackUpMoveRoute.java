@@ -23,7 +23,8 @@ public class BackUpMoveRoute implements Route {
         String playerName = request.session().attribute("playerName");
         Player player = gameCentre.getPlayer(playerName);
 
-        gameCentre.removePlayerMove(player, gameCentre.getPlayerMove(player));
+      //  gameCentre.removePlayerMove(player, gameCentre.getPlayerMove(player));
+        gameCentre.removePlayerMoves(player);
         gameCentre.updateGame(player, gameCentre.getPlayerGame(player));
 
 
