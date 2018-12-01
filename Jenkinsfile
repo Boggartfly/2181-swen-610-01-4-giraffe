@@ -30,11 +30,7 @@ pipeline {
                                       steps {
                                           sh 'mvn clean test jacoco:report'
                                       }
-                                      post {
-                                          success {
-                                              jacoco 'target/site/**/*.xml'
-                                          }
-                                      }
+
            }
     }
 }
