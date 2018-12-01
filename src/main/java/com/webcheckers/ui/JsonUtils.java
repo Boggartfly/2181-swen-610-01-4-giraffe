@@ -10,19 +10,19 @@ import spark.ResponseTransformer;
  */
 public class JsonUtils {
 
-  private static final Gson GSON = new Gson();
+    private static final Gson GSON = new Gson();
 
-  public static <T> T fromJson(final String json, final Class<T> clazz) {
-    return GSON.fromJson(json, clazz);
-  }
+    public static <T> T fromJson(final String json, final Class<T> clazz) {
+        return GSON.fromJson(json, clazz);
+    }
 
-  public static String toJson(Object object) {
-    return GSON.toJson(object);
-  }
+    public static String toJson(Object object) {
+        return GSON.toJson(object);
+    }
 
 
-  public static ResponseTransformer json() {
-    return JsonUtils::toJson;
-  }
+    public static ResponseTransformer json() {
+        return JsonUtils::toJson;
+    }
 
 }

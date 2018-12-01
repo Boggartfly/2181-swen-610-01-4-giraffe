@@ -12,14 +12,14 @@ public class MessageTest {
         message = new Message("Test",MessageTypeEnum.info);
     }
 
-    @Ignore
+
     @Test
     public void getText(){
         message.setText("TestMessage");
         assertEquals("TestMessage",message.getText());
     }
 
-    @Ignore
+
     @Test
     public void setType(){
         message.setType(MessageTypeEnum.info);

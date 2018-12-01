@@ -11,12 +11,12 @@ import java.util.stream.Collectors;
 
 /**
  * Board is an iterable
- *
+ * <p>
  * An iterable should have an iterator to iterate over
- *
  */
 
 public class Board  implements Iterable<Row> {
+
 
     private List<Row> rowList;
 
@@ -58,7 +58,6 @@ public class Board  implements Iterable<Row> {
 
 
     public Piece fetchPiece(Position position) {
-
 
         return rowList.stream().filter(row -> row.getIndex() == position.getRow()).findFirst().get().getSpaces()
                 .stream().filter(space -> space.getCellIdx() == position.getCell()).findFirst().get().getPiece();

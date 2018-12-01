@@ -9,9 +9,10 @@ public class Game {
     private Player opponent;
     private Board board;
     private int myTurn;
+    private Player winner;
 
 
-     public Game(Player player, Player opponent){
+    public Game(Player player, Player opponent) {
         this.player = player;
         this.opponent = opponent;
 
@@ -41,9 +42,9 @@ public class Game {
     }
 
 
-    public boolean isOpponentAvailable(){
+    public boolean isOpponentAvailable() {
 
-        return opponent !=null ? true: false;
+        return opponent != null;
     }
 
     public int getMyTurn() {
@@ -56,6 +57,14 @@ public class Game {
 
     public Board getBoard() {
         return board;
+    }
+
+    public Player getWinner() {
+        return winner;
+    }
+
+    public void setWinner(Player winner) {
+        this.winner = winner;
     }
 
     @Override

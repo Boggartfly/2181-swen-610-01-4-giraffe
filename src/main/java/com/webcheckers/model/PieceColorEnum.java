@@ -2,6 +2,7 @@ package com.webcheckers.model;
 
 public enum PieceColorEnum {
 
+
     RED("player"),
     WHITE("opponent");
 
@@ -19,6 +20,7 @@ public enum PieceColorEnum {
     PieceColorEnum(String playerType){
         this.playetType = playerType;
     }
+
 
 
 

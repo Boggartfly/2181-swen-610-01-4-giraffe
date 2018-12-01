@@ -24,12 +24,15 @@ public class SubmitTurnRoute implements Route {
 
         List<Move> moveList = gameCenter.getPlayerMoves(player);
         Move move = gameCenter.getPlayerMove(player);
-      //  gameCenter.removePlayerMove(player,move);
         Game game = gameCenter.getPlayerGame(player);
+        Piece startPositionPiece = game.getBoard().fetchPiece(move.getStart());
+      //  gameCenter.removePlayerMove(player,move);
 
-        if(playerName.equalsIgnoreCase(game.getPlayer().getPlayerName())){
+
+
+        if (playerName.equalsIgnoreCase(game.getPlayer().getPlayerName())) {
             game.setMyTurn(1);
-        }else {
+        } else {
             game.setMyTurn(0);
         }
         Piece pieceToMove =null;
@@ -40,17 +43,17 @@ public class SubmitTurnRoute implements Route {
             game.getBoard().setPiece(move.getEnd(), pieceToMove);
         }
 
-        if(move.isValidJumpMove(gameCenter.getPlayerType(player))) {
+        if(move.isValidJumpMove(gameCenter.getPlayerType(player),startPositionPiece.getType())) {
            Position position = new Position((move.getEnd().getRow() + move.getStart().getRow())/2,(move.getEnd().getCell()+move.getStart().getCell())/2);
            game.getBoard().setPiece(position,null);
         }
-        if(move.isKing(gameCenter.getPlayerType(player))){
+        if (move.isKing(gameCenter.getPlayerType(player))) {
             pieceToMove.setType(PieceTypeEnum.KING);
             game.getBoard().setPiece(move.getEnd(),pieceToMove);
         }
 
         if(game.getBoard().isOpponentPieceLeft(gameCenter.getPlayerType(player))){
-            //TODO:
+            game.setWinner(player);
 
         }
         gameCenter.removePlayerMoves(player);

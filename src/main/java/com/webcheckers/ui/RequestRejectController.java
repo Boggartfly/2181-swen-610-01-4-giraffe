@@ -1,11 +1,12 @@
 package com.webcheckers.ui;
 
 import com.webcheckers.appl.GameCentre;
-import spark.*;
+import spark.ModelAndView;
+import spark.Request;
+import spark.Response;
+import spark.Route;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class RequestRejectController implements Route {
@@ -16,7 +17,7 @@ public class RequestRejectController implements Route {
 
     public RequestRejectController(GameCentre gameCentre) {
         this.gameCentre = gameCentre;
-       // this.userRequestorListMap = new HashMap<>();
+        // this.userRequestorListMap = new HashMap<>();
 
     }
 
@@ -35,8 +36,7 @@ public class RequestRejectController implements Route {
         player = request.session().attribute("playerName");
         requestor = request.queryParams("requestor");
         if (GameRequestController.userRequestorListMap.get(player) != null)
-            if (GameRequestController.userRequestorListMap.get(player).contains(requestor))
-                GameRequestController.userRequestorListMap.get(player).remove(requestor);
+            GameRequestController.userRequestorListMap.get(player).remove(requestor);
 
         GameLobbyController.vm.put("requests", GameRequestController.userRequestorListMap);
         response.redirect("/gameLobby");

@@ -12,23 +12,16 @@ import java.util.*;
 
 public class GameCentre {
 
-    public  static Map<String, Player> userPlayerMap ;
+    public static Map<String, Player> userPlayerMap;
 
-    private  static Set<String> userSet;
-
-    public Set<String> getAvailableuserSet() {
-        return availableuserSet;
-    }
-
-    private  Set<String> availableuserSet;
+    private static Set<String> userSet;
+    private static Set<Game> gameList;
+    private Set<String> availableuserSet;
 
     private  Map<Player, List<Move>> playerMoves;
 
 
-    private  static Set<Game> gameList;
-
-
-    public GameCentre(){
+    public GameCentre() {
 
         userPlayerMap = new HashMap<>();
         userSet = new HashSet<>();
@@ -37,22 +30,26 @@ public class GameCentre {
         playerMoves = new HashMap<>();
     }
 
-    public void addPlayerMove(Player player, Move move){
+    public Set<String> getAvailableuserSet() {
+        return availableuserSet;
+    }
 
-        if(playerMoves.get(player) == null){
+    public void addPlayerMove(Player player, Move move) {
+
+        if (playerMoves.get(player) == null) {
 
             List<Move> moves = new ArrayList<>();
             moves.add(move);
 
-            playerMoves.put(player,moves);
-        }else {
+            playerMoves.put(player, moves);
+        } else {
             playerMoves.get(player).add(move);
         }
 
 
     }
 
-    public Move getPlayerMove(Player player){
+    public Move getPlayerMove(Player player) {
 
         if(playerMoves.get(player)!=null) {
 
@@ -61,7 +58,7 @@ public class GameCentre {
             return null;
     }
 
-    public void removePlayerMove(Player player, Move move){
+    public void removePlayerMove(Player player, Move move) {
 
         playerMoves.get(player).
                 remove(playerMoves.get(player).stream().filter(move1 -> move1.getStart() == move.getStart() && move1.getEnd() == move.getEnd()).findFirst().get());
@@ -80,25 +77,24 @@ public class GameCentre {
     }
 
 
-
-    public  boolean isUserAvailable(String userName){
-        return userSet.contains(userName)?false:true;
+    public boolean isUserAvailable(String userName) {
+        return !userSet.contains(userName);
     }
 
-    public  void addUser(String userName){
+    public void addUser(String userName) {
         userSet.add(userName);
     }
 
-    public  void removeUser(String userName){
+    public void removeUser(String userName) {
         userSet.remove(userName);
     }
 
-    public  Player getPlayer(String userName){
+    public Player getPlayer(String userName) {
         Player player = null;
 
-        for(String user: userPlayerMap.keySet()){
+        for (String user : userPlayerMap.keySet()) {
 
-            if(userName.equalsIgnoreCase(user)){
+            if (userName.equalsIgnoreCase(user)) {
                 player = userPlayerMap.get(user);
             }
 
@@ -106,57 +102,54 @@ public class GameCentre {
         return player;
     }
 
-    public  Game getPlayerGame(Player player){
+    public Game getPlayerGame(Player player) {
 
-        System.out.println("########"+ player.toString());
+        System.out.println("########" + player.toString());
 
 
-       return gameList.stream().filter(game -> game.getPlayer().getPlayerName().equalsIgnoreCase(player.getPlayerName()) ||
+        return gameList.stream().filter(game -> game.getPlayer().getPlayerName().equalsIgnoreCase(player.getPlayerName()) ||
                 game.getOpponent().getPlayerName().equalsIgnoreCase(player.getPlayerName())).findFirst().get();
 
     }
 
-    public String getPlayerType(Player player){
-        if(gameList.stream().anyMatch(game -> game.getPlayer().getPlayerName().equalsIgnoreCase(player.getPlayerName()))){
+    public String getPlayerType(Player player) {
+        if (gameList.stream().anyMatch(game -> game.getPlayer().getPlayerName().equalsIgnoreCase(player.getPlayerName()))) {
             return "player";
-        }
-        else if(gameList.stream().anyMatch(game -> game.getOpponent().getPlayerName().equalsIgnoreCase(player.getPlayerName()))){
+        } else if (gameList.stream().anyMatch(game -> game.getOpponent().getPlayerName().equalsIgnoreCase(player.getPlayerName()))) {
             return "opponent";
-        }
-        else {
+        } else {
             return null;
         }
     }
 
-    public void setUserPlayerMap(String playerName, Player player){
+    public void setUserPlayerMap(String playerName, Player player) {
 
-        userPlayerMap.put(playerName,player);
+        userPlayerMap.put(playerName, player);
     }
 
-    public void addAvailableUser(String userName){
+    public void addAvailableUser(String userName) {
 
         availableuserSet.add(userName);
 
     }
 
-    public void addGame(Game game){
+    public void addGame(Game game) {
         gameList.add(game);
     }
 
-    public void updateGame(Player player, Game game){
+    public void updateGame(Player player, Game game) {
         gameList.remove(getPlayerGame(player));
         gameList.add(game);
     }
 
-    public void removeGame(Game game){
+    public void removeGame(Game game) {
         gameList.remove(game);
     }
 
-    public void removeAvailableUser(String userName){
+    public void removeAvailableUser(String userName) {
 
         availableuserSet.remove(userName);
     }
-
 
 
 }

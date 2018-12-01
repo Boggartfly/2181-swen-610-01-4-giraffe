@@ -27,30 +27,21 @@ public class Move {
     }
 
 
-    public boolean isValidMove(String playerType){
-        switch (playerType){
+    public boolean isValidMove(String playerType) {
+        switch (playerType) {
             case "player":
-                if(this.getEnd().getRow() == this.getStart().getRow() +1
-                        && Math.abs(this.getEnd().getCell()-this.getStart().getCell()) ==1){
-                    return true;
-
-                }else {
-                    return false;
-                }
+                return this.getEnd().getRow() == this.getStart().getRow() + 1
+                        && Math.abs(this.getEnd().getCell() - this.getStart().getCell()) == 1;
             case "opponent":
-                if(this.getEnd().getRow() == this.getStart().getRow() -1
-                        && Math.abs(this.getEnd().getCell()-this.getStart().getCell()) ==1){
-                    return true;
+                return this.getEnd().getRow() == this.getStart().getRow() - 1
+                        && Math.abs(this.getEnd().getCell() - this.getStart().getCell()) == 1;
 
-                }else {
-                    return false;
-                }
-
-                default:
-                    return false;
+            default:
+                return false;
 
         }
     }
+
 
     public boolean isValidMove(String playerType,PieceTypeEnum pieceTypeEnum){
 
@@ -81,26 +72,20 @@ public class Move {
 
     public boolean isValidJumpMove(String playerType ){
 
-        switch (playerType){
+
+        switch (playerType) {
             case "player":
-                if(this.getEnd().getRow() == this.getStart().getRow() + 2
-                        && Math.abs(this.getEnd().getCell()-this.getStart().getCell()) ==2){
-                    return true;
-                }else {
-                    return false;
-                }
+                return this.getEnd().getRow() == this.getStart().getRow() + 2
+                        && Math.abs(this.getEnd().getCell() - this.getStart().getCell()) == 2;
 
             case "opponent":
-                if (this.getEnd().getRow() == this.getStart().getRow() -2
-                        && Math.abs(this.getEnd().getCell()-this.getStart().getCell()) ==2){
-                    return true;
-                }else {
-                    return false;
-                }
+                return this.getEnd().getRow() == this.getStart().getRow() - 2
+                        && Math.abs(this.getEnd().getCell() - this.getStart().getCell()) == 2;
 
                 default:
                     return false;
         }
+
 
     }
 
@@ -108,7 +93,7 @@ public class Move {
 
         switch (pieceTypeEnum){
             case SINGLE:
-                return isValidMove(playerType);
+                return isValidJumpMove(playerType);
             case KING:
                 if( Math.abs(this.getEnd().getRow()-this.getStart().getRow()) ==2
                         && Math.abs(this.getEnd().getCell()-this.getStart().getCell()) ==2){
@@ -124,9 +109,10 @@ public class Move {
 
     }
 
-    public boolean isKing(String playerType){
-        switch (playerType){
+    public boolean isKing(String playerType) {
+        switch (playerType) {
             case "player":
+
                 return this.getEnd().getRow()==7 ? true:false;
 
             case "opponent":
@@ -134,6 +120,7 @@ public class Move {
 
              default:
                  return false;
+
         }
     }
 }

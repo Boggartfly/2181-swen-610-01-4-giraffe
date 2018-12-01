@@ -36,6 +36,7 @@ public class ValidateMoveRoute implements Route {
         try {
 
 
+
             List<Move> availableJumpMoves = game.getBoard().generateAvailableJumpMoves(player.getPlayerColor(), gameCentre.getPlayerType(player));
 
             if (availableJumpMoves.size() != 0 && !checkMoveContained(availableJumpMoves, move)) {
@@ -48,6 +49,7 @@ public class ValidateMoveRoute implements Route {
                 Position position = new Position((move.getEnd().getRow() + move.getStart().getRow()) / 2, (move.getEnd().getCell() + move.getStart().getCell()) / 2);
 
                 Piece piece = game.getBoard().fetchPiece(position);
+
 
                 if (piece != null) {
                     if (piece.getColor().equals(PieceColorEnum.getOpponentColor(playerType)) && gameCentre.getPlayerMove(player) == null) {
@@ -65,8 +67,10 @@ public class ValidateMoveRoute implements Route {
 
             return JsonUtils.toJson(message);
         } catch (Exception e) {
-            message = new Message("Sorry this is not a valid move because TODO", MessageTypeEnum.error);
+            message = new Message("Sorry this is not a valid move because Exception", MessageTypeEnum.error);
+            e.printStackTrace();
             return JsonUtils.toJson(message);
+
         }
     }
 
