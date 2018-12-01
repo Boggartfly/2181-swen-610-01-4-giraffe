@@ -32,7 +32,7 @@ pipeline {
                                       }
                                       post {
                                           success {
-                                              junit 'target/site/**/*.xml'
+                                              jacoco 'target/site/**/*.xml'
                                           }
                                       }
            }
