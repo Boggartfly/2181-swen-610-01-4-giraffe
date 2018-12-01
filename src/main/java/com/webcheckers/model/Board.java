@@ -4,10 +4,7 @@ package com.webcheckers.model;
  * Author : Ashish
  */
 
-import javafx.geometry.Pos;
-
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Board is an iterable
