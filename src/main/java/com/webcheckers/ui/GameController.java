@@ -32,13 +32,14 @@ public class GameController implements TemplateViewRoute {
 
         System.out.println("#### PLAYER ++++ " + gameCentre.getPlayer(playerName).toString());
         Player player = gameCentre.getPlayer(playerName.trim());
-
+        Map<String, Object> vm = new HashMap<>();
         Game game = gameCentre.getPlayerGame(player);
 
-        System.out.println("#### GAME ++++" + game.toString());
+        if(game == null){
+            redirectPlayer(response, playerName, game, vm);
+        }
 
 
-        Map<String, Object> vm = new HashMap<>();
 
 
         if (game.getPlayer().getPlayerName().equalsIgnoreCase(playerName)) {
@@ -71,9 +72,20 @@ public class GameController implements TemplateViewRoute {
     }
 
     private void redirectPlayer(Response response, String playerName, Game game, Map<String, Object> vm) {
-        if (game.getWinner() == gameCentre.getPlayer(playerName)) {
+        if(game ==null){
+            response.redirect("/gameLobby");
+        }
+        else if (game.getWinner() == gameCentre.getPlayer(playerName)) {
+            String opponentName = gameCentre.getPlayer(playerName).getOpponentName();
             winner = true;
             gameCentre.removeGame(game);
+            GameLobbyController.awaitingPlayer.remove(playerName);
+            GameLobbyController.awaitingPlayer.remove(opponentName);
+            gameCentre.addAvailableUser(playerName);
+            gameCentre.addAvailableUser(opponentName);
+            if (GameRequestController.userRequestorListMap.get(player) != null)
+                GameRequestController.userRequestorListMap.get(player).remove(opponentName);
+
             response.redirect("/gameLobby");
 
         }

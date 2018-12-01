@@ -227,7 +227,7 @@ public class WebServer {
         //resign game
         get(RESIGN_GAME_URL, new ResignGameRoute(gameCentre));
 
-
+        get("/removePieces",new TestRemovePieces(gameCentre));
     }
 
     public boolean validateLoggedInUser(Request request) {

@@ -106,10 +106,15 @@ public class GameCentre {
 
         System.out.println("########" + player.toString());
 
+        try {
 
-        return gameList.stream().filter(game -> game.getPlayer().getPlayerName().equalsIgnoreCase(player.getPlayerName()) ||
-                game.getOpponent().getPlayerName().equalsIgnoreCase(player.getPlayerName())).findFirst().get();
 
+            return gameList.stream().filter(game -> game.getPlayer().getPlayerName().equalsIgnoreCase(player.getPlayerName()) ||
+                    game.getOpponent().getPlayerName().equalsIgnoreCase(player.getPlayerName())).findFirst().get();
+
+        }catch (Exception e){
+            return null;
+        }
     }
 
     public String getPlayerType(Player player) {

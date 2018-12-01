@@ -32,6 +32,9 @@
         <#else>
             <a href="/signin">sign in</a>
         </#if>
+        <a href="/removePieces" enabled=enabled>
+            Remove Pieces
+        </a>
     </div>
 
     <div class="body">

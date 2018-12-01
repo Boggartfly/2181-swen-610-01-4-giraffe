@@ -29,11 +29,11 @@ public class ResignGameRoute implements Route {
         String opponentName = gameCentre.getPlayer(player).getOpponentName();
 
 
-        GameLobbyController.awaitingPlayer.remove(playerName);
-        GameLobbyController.awaitingPlayer.remove(opponentName);
+       // GameLobbyController.awaitingPlayer.remove(playerName);
+       // GameLobbyController.awaitingPlayer.remove(opponentName);
 
-        gameCentre.addAvailableUser(playerName);
-        gameCentre.addAvailableUser(opponentName);
+        //gameCentre.addAvailableUser(playerName);
+        //gameCentre.addAvailableUser(opponentName);
 
         if (GameRequestController.userRequestorListMap.get(player) != null)
             GameRequestController.userRequestorListMap.get(player).remove(opponentName);

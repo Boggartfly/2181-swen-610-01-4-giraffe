@@ -53,6 +53,7 @@ public class SubmitTurnRoute implements Route {
         }
 
         if(game.getBoard().isOpponentPieceLeft(gameCenter.getPlayerType(player))){
+           // response.redirect(WebServer.RESIGN_GAME_URL);
             game.setWinner(player);
 
         }

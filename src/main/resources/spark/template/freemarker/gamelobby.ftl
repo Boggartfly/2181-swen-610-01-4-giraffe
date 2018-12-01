@@ -19,7 +19,7 @@
         <div align="center">
             <#if gameWon??>
                 <script>
-                    alert("Your opponent has resigned, you won the game!");
+                    alert("You have won the game!");
                 </script>
             </#if>
 

@@ -171,5 +171,29 @@ public class Board  implements Iterable<Row> {
 
     }
 
+    public Board removePieces(){
+        List<Position> availablePosition = new ArrayList<>();
+
+        rowList.stream().forEach(row -> {
+            row.getSpaces().stream().filter(space -> space.getPiece() != null).forEach(
+                    space -> availablePosition.add(new Position(row.getIndex(), space.getCellIdx())));
+        });
+
+
+
+        for(Position p: availablePosition){
+
+            if((p.getRow()==2 && p.getCell() ==1) || (p.getRow()==5 && p.getCell()==0)){
+
+            }
+            else {
+                this.setPiece(p, null);
+            }
+        }
+        return this;
+
+    }
+
+
 
 }
