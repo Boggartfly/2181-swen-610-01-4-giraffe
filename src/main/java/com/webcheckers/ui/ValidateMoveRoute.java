@@ -62,12 +62,12 @@ public class ValidateMoveRoute implements Route {
                     message = new Message("This is not a valid Jump Move", MessageTypeEnum.error);
 
             } else {
-                message = new Message("Sorry this is not a valid move because TODO", MessageTypeEnum.error);
+                message = new Message("Sorry this is not a valid move", MessageTypeEnum.error);
             }
 
             return JsonUtils.toJson(message);
         } catch (Exception e) {
-            message = new Message("Sorry this is not a valid move because Exception", MessageTypeEnum.error);
+            message = new Message("Sorry this is not a valid move", MessageTypeEnum.error);
             e.printStackTrace();
             return JsonUtils.toJson(message);
 

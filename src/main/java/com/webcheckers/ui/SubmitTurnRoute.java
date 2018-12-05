@@ -32,8 +32,11 @@ public class SubmitTurnRoute implements Route {
 
         if (playerName.equalsIgnoreCase(game.getPlayer().getPlayerName())) {
             game.setMyTurn(1);
+            game.getPlayer().setMessage(new Message("Its "+ game.getOpponent().getPlayerName()+"'s turns now ",MessageTypeEnum.info));
         } else {
             game.setMyTurn(0);
+            game.getPlayer().setMessage(new Message("Its "+ game.getPlayer().getPlayerName()+"'s turns now ",MessageTypeEnum.info));
+
         }
         Piece pieceToMove =null;
 
@@ -57,6 +60,11 @@ public class SubmitTurnRoute implements Route {
             game.setWinner(player);
 
         }
+
+
+
+
+
         gameCenter.removePlayerMoves(player);
         gameCenter.updateGame(player,game);
 

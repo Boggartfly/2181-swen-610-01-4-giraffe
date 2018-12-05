@@ -23,7 +23,7 @@ public class Player {
         this.playerColor = PieceColorEnum.RED;
         this.opponentColor = PieceColorEnum.WHITE;
         this.isMyTurn = true;
-        this.message = new Message("Hello", MessageTypeEnum.info);
+        this.message = new Message("Welcome to the Game of Checkers", MessageTypeEnum.info);
     }
 
     public Player(String playerName, Player firstPlayer) {
@@ -34,7 +34,7 @@ public class Player {
         this.opponentColor = firstPlayer.playerColor;
         this.board = firstPlayer.board;
         this.isMyTurn = !firstPlayer.isMyTurn;
-        this.message = new Message("Hello", MessageTypeEnum.info);
+        this.message = new Message("Welcome to the Game of Checkers", MessageTypeEnum.info);
 
 
     }
