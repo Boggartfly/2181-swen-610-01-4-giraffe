@@ -35,6 +35,9 @@
         <a href="/removePieces" enabled=enabled>
             Remove Pieces
         </a>
+        <a href="/kingPieceTest" enabled=enabled>
+                    Remove Pieces KingTest
+                </a>
     </div>
 
     <div class="body">

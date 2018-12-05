@@ -32,8 +32,7 @@ public class GameRequestController implements Route {
 
         String player;
         String requestor;
-        //System.out.println("Requestor Name " + requestor);
-        //System.out.println("Player Name " + player);
+
 
 
         //guess the if/else could be deleted, we never call this controller with a get

@@ -228,6 +228,8 @@ public class WebServer {
         get(RESIGN_GAME_URL, new ResignGameRoute(gameCentre));
 
         get("/removePieces",new TestRemovePieces(gameCentre));
+
+        get("/kingPieceTest",new TestMakeKing(gameCentre));
     }
 
     public boolean validateLoggedInUser(Request request) {

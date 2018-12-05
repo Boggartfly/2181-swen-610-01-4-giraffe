@@ -194,6 +194,38 @@ public class Board  implements Iterable<Row> {
 
     }
 
+    public Board removePiecesForKing(){
+
+        List<Position> availablePosition = new ArrayList<>();
+
+        rowList.stream().forEach(row -> {
+            row.getSpaces().stream().filter(space -> space.getPiece() != null).forEach(
+                    space -> availablePosition.add(new Position(row.getIndex(), space.getCellIdx())));
+        });
+
+        for(Position p: availablePosition){
+
+            if( (p.getRow()==0 && p.getCell() ==3) || (p.getRow()==1 && p.getCell() ==0) || (p.getRow()==5 && p.getCell() ==0) ){
+
+                this.setPiece(p, null);
+
+            }
+            else if(p.getRow()==3 && p.getCell() ==0) {
+
+                this.setPiece(p,new Piece(PieceTypeEnum.SINGLE,PieceColorEnum.RED));
+
+            }
+            else if(p.getRow()==2 && p.getCell() ==1) {
+                this.setPiece(p,new Piece(PieceTypeEnum.SINGLE,PieceColorEnum.WHITE));
+
+            }
+        }
+        return this;
+
+
+
+    }
+
 
 
 }
