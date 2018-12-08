@@ -13,7 +13,7 @@ microframework.
 
 - Shimon Johnson 
 
-- Hind Alharbi
+- Hind Saleh Alharbi
 
 
 ##Prerequisites
