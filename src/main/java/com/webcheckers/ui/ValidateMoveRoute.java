@@ -18,6 +18,12 @@ public class ValidateMoveRoute implements Route {
         this.gameCentre = gameCentre;
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @return
+     */
     public Object handle(Request request, Response response) {
 
         Message message;
@@ -73,6 +79,13 @@ public class ValidateMoveRoute implements Route {
 
         }
     }
+
+    /**
+     *
+     * @param availableJumpMoves
+     * @param move
+     * @return
+     */
 
     public boolean checkMoveContained(List<Move> availableJumpMoves, Move move){
 

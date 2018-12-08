@@ -7,6 +7,12 @@ public enum PieceColorEnum {
     WHITE("opponent");
 
     public  String playetType;
+
+    /**
+     *
+     * @param playerType
+     * @return
+     */
     public static PieceColorEnum getOpponentColor(String playerType){
 
         if(playerType.equalsIgnoreCase("player")){
@@ -16,6 +22,11 @@ public enum PieceColorEnum {
             return RED;
         }
     }
+
+    /**
+     *
+     * @param playerType
+     */
 
     PieceColorEnum(String playerType){
         this.playetType = playerType;

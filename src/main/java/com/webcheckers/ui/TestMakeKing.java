@@ -11,6 +11,13 @@ public class TestMakeKing implements Route {
 
     private GameCentre gameCentre;
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     @Override
     public Object handle(Request request, Response response) throws Exception {
 

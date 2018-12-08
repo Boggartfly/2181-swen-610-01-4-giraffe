@@ -21,6 +21,12 @@ public class RequestRejectController implements Route {
 
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @return
+     */
     @Override
     public ModelAndView handle(Request request, Response response) {
         Map<String, Object> vm = new HashMap<>();

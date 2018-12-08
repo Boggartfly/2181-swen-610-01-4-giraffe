@@ -29,6 +29,10 @@ public class Position {
         this.cell = cell;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isValidPosition() {
 
         if ((row % 2 == 0) && (cell % 2 == 1)) {
@@ -36,10 +40,20 @@ public class Position {
         } else return (row % 2 == 1) && (cell % 2 == 0);
     }
 
+    /**
+     *
+     * @return
+     */
+
     public boolean initialPosition() {
 
         return row <= 2 || row >= 5;
     }
+
+    /**
+     *
+     * @return
+     */
 
     public boolean isOpponentsPosition() {
         return row >= 5;

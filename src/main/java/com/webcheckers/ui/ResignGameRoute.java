@@ -14,9 +14,15 @@ public class ResignGameRoute implements Route {
         this.gameCentre = gameCentre;
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @return
+     */
     @Override
     public Object handle(Request request, Response response) {
-        //TODO: to be defined
+
 
         System.out.println("resigning game");
         String player = request.session().attribute("playerName");
@@ -28,12 +34,6 @@ public class ResignGameRoute implements Route {
         String playerName = gameCentre.getPlayer(player).getPlayerName();
         String opponentName = gameCentre.getPlayer(player).getOpponentName();
 
-
-       // GameLobbyController.awaitingPlayer.remove(playerName);
-       // GameLobbyController.awaitingPlayer.remove(opponentName);
-
-        //gameCentre.addAvailableUser(playerName);
-        //gameCentre.addAvailableUser(opponentName);
 
         if (GameRequestController.userRequestorListMap.get(player) != null)
             GameRequestController.userRequestorListMap.get(player).remove(opponentName);

@@ -26,6 +26,11 @@ public class Move {
         this.end = end;
     }
 
+    /**
+     *
+     * @param playerType
+     * @return
+     */
 
     public boolean isValidMove(String playerType) {
         switch (playerType) {
@@ -42,6 +47,13 @@ public class Move {
         }
     }
 
+
+    /**
+     *
+     * @param playerType
+     * @param pieceTypeEnum
+     * @return
+     */
 
     public boolean isValidMove(String playerType,PieceTypeEnum pieceTypeEnum){
 
@@ -68,8 +80,12 @@ public class Move {
 
     }
 
-    
 
+    /**
+     *
+     * @param playerType
+     * @return
+     */
     public boolean isValidJumpMove(String playerType ){
 
 
@@ -89,6 +105,12 @@ public class Move {
 
     }
 
+    /**
+     *
+     * @param playerType
+     * @param pieceTypeEnum
+     * @return
+     */
     public boolean isValidJumpMove(String playerType , PieceTypeEnum pieceTypeEnum ){
 
         switch (pieceTypeEnum){
@@ -109,6 +131,11 @@ public class Move {
 
     }
 
+    /**
+     *
+     * @param playerType
+     * @return
+     */
     public boolean isKing(String playerType) {
         switch (playerType) {
             case "player":

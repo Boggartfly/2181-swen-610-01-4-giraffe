@@ -20,6 +20,12 @@ public class LandingController implements TemplateViewRoute {
         this.gameCentre = gameCentre;
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @return
+     */
     @Override
     public ModelAndView handle(Request request, Response response) {
 

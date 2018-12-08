@@ -53,6 +53,11 @@ public class Board  implements Iterable<Row> {
         return rowList.iterator();
     }
 
+    /**
+     *
+     * @param position
+     * @return
+     */
 
     public Piece fetchPiece(Position position) {
 
@@ -61,11 +66,22 @@ public class Board  implements Iterable<Row> {
 
     }
 
+    /**
+     *
+     * @param position
+     * @param piece
+     */
     public void setPiece(Position position, Piece piece) {
         rowList.stream().filter(row -> row.getIndex() == position.getRow()).findFirst().get().getSpaces()
                 .stream().filter(space -> space.getCellIdx() == position.getCell()).findFirst().get().setPiece(piece);
     }
 
+    /**
+     *
+     * @param move
+     * @param playerType
+     * @return
+     */
 
     public Boolean isValidJump(Move move, String playerType){
 
@@ -87,6 +103,13 @@ public class Board  implements Iterable<Row> {
         return result;
     }
 
+    /**
+     *
+     * @param startPosition
+     * @param pieceColorEnum
+     * @param playerType
+     * @return
+     */
 
     public List<Position> generateMoveEndPositions(Position startPosition, PieceColorEnum pieceColorEnum,String playerType) {
 
@@ -132,6 +155,12 @@ public class Board  implements Iterable<Row> {
         return positionList;
     }
 
+    /**
+     *
+     * @param pieceColor
+     * @param playerType
+     * @return
+     */
     public List<Move> generateAvailableJumpMoves(PieceColorEnum pieceColor, String playerType){
 
         List<Position> availableSinglePiecesPositions = new ArrayList<>();
@@ -157,6 +186,11 @@ public class Board  implements Iterable<Row> {
         return moves;
     }
 
+    /**
+     *
+     * @param playerType
+     * @return
+     */
     public Boolean isOpponentPieceLeft(String playerType){
         List<Position> availablePosition = new ArrayList<>();
 
@@ -170,6 +204,11 @@ public class Board  implements Iterable<Row> {
         return availablePosition.size() ==0 ?true :false;
 
     }
+
+    /**
+     *
+     * @return
+     */
 
     public Board removePieces(){
         List<Position> availablePosition = new ArrayList<>();
@@ -193,6 +232,11 @@ public class Board  implements Iterable<Row> {
         return this;
 
     }
+
+    /**
+     *
+     * @return
+     */
 
     public Board removePiecesForKing(){
 

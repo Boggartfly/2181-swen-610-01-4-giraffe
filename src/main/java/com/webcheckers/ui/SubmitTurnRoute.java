@@ -15,6 +15,13 @@ public class SubmitTurnRoute implements Route {
         this.gameCenter = gameCenter;
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     @Override
     public Object handle(Request request, Response response) throws Exception {
 

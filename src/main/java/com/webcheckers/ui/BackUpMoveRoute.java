@@ -16,14 +16,18 @@ public class BackUpMoveRoute implements Route {
         this.gameCentre = gameCentre;
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @return
+     */
     @Override
     public Object handle(Request request, Response response) {
-        //TODO: to be defined
 
         String playerName = request.session().attribute("playerName");
         Player player = gameCentre.getPlayer(playerName);
 
-      //  gameCentre.removePlayerMove(player, gameCentre.getPlayerMove(player));
         gameCentre.removePlayerMoves(player);
         gameCentre.updateGame(player, gameCentre.getPlayerGame(player));
 

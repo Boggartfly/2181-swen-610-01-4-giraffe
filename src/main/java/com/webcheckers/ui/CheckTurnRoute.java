@@ -7,6 +7,7 @@ import spark.Response;
 import spark.Route;
 
 public class CheckTurnRoute implements Route {
+
     private GameCentre gameCenter;
 
     public CheckTurnRoute(GameCentre gameCenter) {
@@ -14,6 +15,13 @@ public class CheckTurnRoute implements Route {
 
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     @Override
     public Object handle(Request request, Response response) throws Exception {
 

@@ -23,6 +23,12 @@ public class GameController implements TemplateViewRoute {
         this.gameCentre = gameCentre;
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @return
+     */
     @Override
     public ModelAndView handle(Request request, Response response) {
 
@@ -71,6 +77,13 @@ public class GameController implements TemplateViewRoute {
         }
     }
 
+    /**
+     *
+     * @param response
+     * @param playerName
+     * @param game
+     * @param vm
+     */
     private void redirectPlayer(Response response, String playerName, Game game, Map<String, Object> vm) {
         if(game ==null){
             response.redirect("/gameLobby");

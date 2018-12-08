@@ -19,6 +19,11 @@ public class ValidateLoginController implements TemplateViewRoute {
 
     private GameCentre gameCentre;
 
+    /**
+     *
+     * @param gameCentre
+     */
+
     public ValidateLoginController(GameCentre gameCentre) {
         this.gameCentre = gameCentre;
     }
@@ -34,6 +39,12 @@ public class ValidateLoginController implements TemplateViewRoute {
         return unavailableUserName;
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @return
+     */
     @Override
     public ModelAndView handle(Request request, Response response) {
         Map<String, Object> vm = new HashMap<>();
@@ -56,6 +67,13 @@ public class ValidateLoginController implements TemplateViewRoute {
         }
         return new ModelAndView(vm, LoginController.LOGIN_VIEW);
     }
+
+    /**
+     *
+     * @param vm
+     * @param message
+     * @return
+     */
 
     protected ModelAndView error(final Map<String, Object> vm, final String message) {
         vm.put(MESSAGE_ATTR, message);

@@ -232,12 +232,23 @@ public class WebServer {
         get("/kingPieceTest",new TestMakeKing(gameCentre));
     }
 
+    /**
+     *
+     * @param request
+     * @return
+     */
+
     public boolean validateLoggedInUser(Request request) {
 
         return !request.session().isNew() && request.session().attributes().contains(GameConstants.playerHeaderName);
 
     }
 
+    /**
+     *
+     * @param request
+     * @return
+     */
     public boolean validateInGameUser(Request request) {
 
         return !request.session().isNew() &&
