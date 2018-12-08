@@ -2,7 +2,7 @@ package com.webcheckers.model;
 
 import org.junit.Test;
 
-/* Author<Hind Alharbi> */
+/* @author <Hind Alharbi>*/
 
 public class MoveTest {
 
